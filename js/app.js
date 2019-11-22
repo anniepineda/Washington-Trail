@@ -5,17 +5,18 @@ var player = new Player(prompt('What is your name?'));
 var startingMoney;
 var startingTime;
 var startingHealth;
+var heading = document.getElementById('city');
+var leftImg = document.getElementById('leftImg');
+var centerImg = document.getElementById('centerImg');
+var rightImg = document.getElementById('rightImg');
+var leftFunction;
+var centerFunction;
+var rightFunction;
 
-var home = ['Home', 'https://via.placeholder.com/150', 'https://via.placeholder.com/150', 'https://via.placeholder.com/150'];
-
+var home = ['Home', 'https://via.placeholder.com/150', 'https://via.placeholder.com/150', 'https://via.placeholder.com/150', snooze, takeBus, takeCar];
 var tacoma = ['Tacoma', 'https://via.placeholder.com/150', 'https://via.placeholder.com/150', 'https://via.placeholder.com/150'];
-
-
 var federalWay = ['Federal Way', 'https://via.placeholder.com/150', 'https://via.placeholder.com/150', 'https://via.placeholder.com/150'];
-
-
 var seaTac = ['SeaTac', 'https://via.placeholder.com/150', 'https://via.placeholder.com/150', 'https://via.placeholder.com/150'];
-
 var seattle = ['Seattle', 'https://via.placeholder.com/150', 'https://via.placeholder.com/150', 'https://via.placeholder.com/150'];
 
 // Player constructor function
@@ -209,4 +210,13 @@ var takeCar = function() {
     player.changeMoney(-1.5);
   }
 }
-var levelOne = ['TITLE: HOME', 'PLACEHOLDER paragraph - intro', 'PLACEHOLDERimgOne', 'PLACEHOLDERimgTwo','PLACEHOLDERimgThree', snooze, takeBus, takeCar];
+function changeLevel(city, leftImgSrc, centerImgSrc, rightImgSrc, funcOne, funcTwo, funcThree) {
+  heading.textContent(city);
+  leftImg.setAttribute('src', leftImgSrc);
+  centerImg.setAttribute('src', centerImgSrc);
+  rightImg.setAttribute('src', rightImgSrc);
+  leftFunction = funcOne;
+  centerFunction = funcTwo;
+  rightFunction = funcThree;
+  console.log('level changed to ' + city);
+}
