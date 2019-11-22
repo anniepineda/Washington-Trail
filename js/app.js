@@ -24,6 +24,7 @@ var rightImg = document.getElementById('rightImg');
 var leftFunction;
 var centerFunction;
 var rightFunction;
+var textBox = document.getElementById('textbox');
 // ARRAYS THAT HOLD THE LOCATION INFORMATION TO BE FED INTO LEVELCHANGE FUNCTION.
 var home = ['Home', 'https://via.placeholder.com/150', 'https://via.placeholder.com/150', 'https://via.placeholder.com/150', snooze, takeBus, takeCar];
 var tacoma = ['Tacoma', 'https://via.placeholder.com/150', 'https://via.placeholder.com/150', 'https://via.placeholder.com/150'];
@@ -63,14 +64,14 @@ var snooze = function() {
   if (roll >= 18) {
     player.changeHealth(30);
     player.changeTime(-15);
-    alert('You got an extra 15 minutes of sleep and feel amazing!');
+    displayText('You got an extra 15 minutes of sleep and feel amazing!');
   } else if (roll >= 2) {
     player.changeHealth(15);
     player.changeTime(-15);
-    alert('You got some extra sleep! Feeling good.');
+    displayText('You got some extra sleep! Feeling good.');
   } else {
     player.health = 0;
-    alert(
+    displayText(
       'While reaching for the alarm you slipped out of bed and broke your neck. Game over.'
     );
     // endGame('lose');
@@ -84,13 +85,13 @@ var talkToStranger = function() {
     );
     strangeJourney(answer);
   } else if (roll >= 2) {
-    alert(
+    displayText(
       'The stranger rambles on and on about UFOs until you slowly back away.'
     );
     player.changeTime(-10);
     // removeAction();
   } else {
-    alert('The stranger stabs you.');
+    displayText('The stranger stabs you.');
     player.changeHealth(-50);
     player.changeTime(-5);
     // removeAction();
@@ -100,35 +101,35 @@ var strangeJourney = function(answer) {
   var roll = rollD20();
   if (answer.toUpperCase() === "YES") {
     if (roll == 20) {
-      alert('The stranger gives you a ride straight to work! You win!');
+      displayText('The stranger gives you a ride straight to work! You win!');
       // endGame('win');
     } else if (roll >= 10) {
-      alert('The stranger gives you a ride to BLANK.');
+      displayText('The stranger gives you a ride to BLANK.');
       player.changeTime(-5);
       // nextLevel();
     } else {
-      alert("You are never seen again");
+      displayText("You are never seen again");
       player.health = 0;
       // endGame('lose');
     }
   } else if (answer.toUpperCase() === "NO") {
     if (roll == 20) {
-      alert('The stranger gives you some money instead!');
+      displayText('The stranger gives you some money instead!');
       player.changeMoney(10);
       player.changeTime(-5);
       // removeAction();
     } else if (roll >= 2) {
-      alert('The stranger goes on his way.');
+      displayText('The stranger goes on his way.');
       player.changeTime(-5);
       // removeAction();
     } else {
-      alert('The stranger is offended and stabs you.');
+      displayText('The stranger is offended and stabs you.');
       player.changeHealth(-50);
       player.changeTime(-5);
       // removeAction();
     }
   } else {
-    alert('Invalid answer');
+    displayText('Invalid answer');
     player.changeTime(-1);
     strangeJourney(prompt('Try again'));
   }
@@ -142,24 +143,24 @@ var searchSeatCustion = function() {
     if (answer.toUpperCase() === "YES") {
       eatMushroom();
     } else if (answer.toUpperCase() === "NO") {
-      alert('You are overcome with a desire to eat the mushroom.');
+      displayText('You are overcome with a desire to eat the mushroom.');
       eatMushroom();
     } else {
-      alert(
+      displayText(
         'While you were failing to enter a valid input, you accidentally ate the mushroom.'
       );
       eatMushroom();
     }
   } else if (roll >= 10) {
-    alert('You found a dollar!');
+    displayText('You found a dollar!');
     player.changeMoney(1);
     // removeAction();
   } else if (roll >= 2) {
-    alert('You found 35 cents.');
+    displayText('You found 35 cents.');
     player.changeMoney(0.35);
     // removeAction();
   } else {
-    alert('You accidentally stab yourself on a used needle.');
+    displayText('You accidentally stab yourself on a used needle.');
     player.changeHealth(-25);
     // removeAction();
   }
@@ -167,22 +168,22 @@ var searchSeatCustion = function() {
 // HELPER FUNCTION, DOESNT NEED TO BE LOADED TO LEVEL
 function eatMushroom() {
   var roll = rollD20();
-  alert('Hmmm... This mushroom tastes kinda funny.');
+  displayText('Hmmm... This mushroom tastes kinda funny.');
   if (roll == 20) {
-    alert(
+    displayText(
       'You have ascended to another realm of consciousness. Where were you going anyways? It doesn\'t matter.'
     );
     // endGame('win');
   } else if (roll >= 10) {
-		alert('You feel refreshed');
+		displayText('You feel refreshed');
     player.changeHealth(roll);
     // removeAction();
   } else if (roll >= 2) {
-    alert('Ughh... That mushroom made you feel sick.');
+    displayText('Ughh... That mushroom made you feel sick.');
     player.changeHealth(roll * -1);
     // removeAction();
   } else {
-    alert('You have died.');
+    displayText('You have died.');
     player.health = 0;
     // endGame();
   }
@@ -190,18 +191,18 @@ function eatMushroom() {
 var takeBus = function() {
   var roll = rollD20();
   if(roll >= 17) {
-	alert('You caught the earlier bus and managed to take a quick nap!');
+	displayText('You caught the earlier bus and managed to take a quick nap!');
 	player.changeTime(-15);
   player.changeHealth(5);
   player.changeMoney(-1.5);
 	// nextLevel();
   } else if(roll >= 5) {
-    alert('You ride the bus to BLANK.');
+    displayText('You ride the bus to BLANK.');
     player.changeTime(-30);
     player.changeMoney(-1.5);
     // nextLevel();
   } else {
-    alert('You missed the bus and had to wait for the next one.');
+    displayText('You missed the bus and had to wait for the next one.');
     player.changeTime(-45);
     player.changeMoney(-1.5);
   }
@@ -209,15 +210,15 @@ var takeBus = function() {
 var takeCar = function() {
   var roll = rollD20();
   if(roll >= 17) {
-	alert('You drive your car to BLANK and make great time!');
+	displayText('You drive your car to BLANK and make great time!');
 	player.changeTime(-10);
 	// nextLevel();
   } else if(roll >= 7) {
-    alert('You ride your bus to BLANK, but there was some traffic.');
+    displayText('You ride your bus to BLANK, but there was some traffic.');
     player.changeTime(-20);
     // nextLevel();
   } else {
-    alert('Your car wouldn\'t start. You had to take the bus to BLANK.');
+    displayText('Your car wouldn\'t start. You had to take the bus to BLANK.');
     player.changeTime(-45);
     player.changeMoney(-1.5);
   }
@@ -231,4 +232,9 @@ function changeLevel(city, leftImgSrc, centerImgSrc, rightImgSrc, funcOne, funcT
   centerFunction = funcTwo;
   rightFunction = funcThree;
   console.log('level changed to ' + city);
+}
+function displayText(text) {
+  var alert = document.createElement('p');
+  alert.textContent(text);
+  textBox.appendChild(alert);
 }
