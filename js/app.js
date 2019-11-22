@@ -6,6 +6,18 @@ var startingMoney;
 var startingTime;
 var startingHealth;
 
+var home = ['Home', 'https://via.placeholder.com/150', 'https://via.placeholder.com/150', 'https://via.placeholder.com/150'];
+
+var tacoma = ['Tacoma', 'https://via.placeholder.com/150', 'https://via.placeholder.com/150', 'https://via.placeholder.com/150'];
+
+
+var federalWay = ['Federal Way', 'https://via.placeholder.com/150', 'https://via.placeholder.com/150', 'https://via.placeholder.com/150'];
+
+
+var seaTac = ['SeaTac', 'https://via.placeholder.com/150', 'https://via.placeholder.com/150', 'https://via.placeholder.com/150'];
+
+var seattle = ['Seattle', 'https://via.placeholder.com/150', 'https://via.placeholder.com/150', 'https://via.placeholder.com/150'];
+
 // Player constructor function
 function Player(
   playerName = 'Player 1',
