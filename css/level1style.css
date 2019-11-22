@@ -20,17 +20,24 @@ footer {
 }
 
 main {
-  position: relative;
-  width: 100vw;
-  height: 76vh;
-  display: flex;
   align-items: center;
+  display: flex;
+  flex-direction: column;
+  height: 76vh;
   justify-content: center;
   overflow: hidden;
+  position: relative;
+  width: 100vw;
+}
+
+main h1 {
+  color: rgb(38, 247, 10);
+  font-family: 'Press Start 2P', cursive;
+  z-index: 1;
 }
 
 nav {
-  background: rgb(116, 237, 100);
+  background: rgb(38, 247, 10);
   height: 12vh;
   width: 100vw;
 }
