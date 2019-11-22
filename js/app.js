@@ -22,4 +22,24 @@ Player.prototype.changeTime = function (delta) {
 }
 Player.prototype.changeHealth = function (delta) {
     this.health += delta;
-}   
+}
+function rollD20() {
+    var roll = Math.floor(Math.random() * (20) + 1);
+    return roll;
+}
+function snooze() {
+    var roll = rollD20();
+    if(roll >= 18) {
+        player.changeHealth(30);
+        player.changeTime(-15);
+        alert('You got an extra 15 minutes of sleep and feel amazing!');
+    } else if(roll >= 2) {
+        player.changeHealth(15);
+        player.changeTime(-15);
+        alert('You got some extra sleep! Feeling good.')
+    } else {
+        player.changeHealth(-100);
+        alert('While reaching for the alarm you slipped out of bed and broke your neck. Game over.')
+        // endgame();
+    }
+}
