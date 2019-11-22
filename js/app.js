@@ -12,7 +12,7 @@ var rightImg = document.getElementById('rightImg');
 var leftFunction;
 var centerFunction;
 var rightFunction;
-
+// ARRAYS THAT HOLD THE LOCATION INFORMATION TO BE FED INTO LEVELCHANGE FUNCTION.
 var home = ['Home', 'https://via.placeholder.com/150', 'https://via.placeholder.com/150', 'https://via.placeholder.com/150', snooze, takeBus, takeCar];
 var tacoma = ['Tacoma', 'https://via.placeholder.com/150', 'https://via.placeholder.com/150', 'https://via.placeholder.com/150'];
 var federalWay = ['Federal Way', 'https://via.placeholder.com/150', 'https://via.placeholder.com/150', 'https://via.placeholder.com/150'];
