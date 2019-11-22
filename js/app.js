@@ -39,7 +39,7 @@ var player = JSON.parse(localStorageUserName);
 var startingMoney;
 var startingTime;
 var startingHealth;
-var heading = document.getElementById('city');
+var heading = document.getElementById('heading');
 var leftImg = document.getElementById('leftImg');
 var centerImg = document.getElementById('centerImg');
 var rightImg = document.getElementById('rightImg');
@@ -48,7 +48,7 @@ var centerFunction;
 var rightFunction;
 var textBox = document.getElementById('textbox');
 // ARRAYS THAT HOLD THE LOCATION INFORMATION TO BE FED INTO LEVELCHANGE FUNCTION.
-var home = ['Home', 'https://via.placeholder.com/150', 'https://via.placeholder.com/150', 'https://via.placeholder.com/150', snooze, takeBus, takeCar];
+var home = ['Home', 'https://via.placeholder.com/150', 'https://via.placeholder.com/150', 'https://via.placeholder.com/150'];
 var tacoma = ['Tacoma', 'https://via.placeholder.com/150', 'https://via.placeholder.com/150', 'https://via.placeholder.com/150'];
 var federalWay = ['Federal Way', 'https://via.placeholder.com/150', 'https://via.placeholder.com/150', 'https://via.placeholder.com/150'];
 var seaTac = ['SeaTac', 'https://via.placeholder.com/150', 'https://via.placeholder.com/150', 'https://via.placeholder.com/150'];
@@ -98,7 +98,7 @@ var snooze = function() {
     );
     // endGame('lose');
   }
-}
+};
 var talkToStranger = function() {
   var roll = rollD20();
   if (roll == 20) {
@@ -118,7 +118,7 @@ var talkToStranger = function() {
     player.changeTime(-5);
     // removeAction();
   }
-}
+};
 var strangeJourney = function(answer) {
   var roll = rollD20();
   if (answer.toUpperCase() === "YES") {
@@ -155,7 +155,7 @@ var strangeJourney = function(answer) {
     player.changeTime(-1);
     strangeJourney(prompt('Try again'));
   }
-}
+};
 var searchSeatCustion = function() {
   var roll = rollD20();
   if (roll == 20) {
@@ -228,7 +228,7 @@ var takeBus = function() {
     player.changeTime(-45);
     player.changeMoney(-1.5);
   }
-}
+};
 var takeCar = function() {
   var roll = rollD20();
   if(roll >= 17) {
@@ -244,23 +244,23 @@ var takeCar = function() {
     player.changeTime(-45);
     player.changeMoney(-1.5);
   }
-}
-function changeLevel(city, leftImgSrc, centerImgSrc, rightImgSrc, funcOne, funcTwo, funcThree) {
-  heading.textContent(city);
-  leftImg.setAttribute('src', leftImgSrc);
-  centerImg.setAttribute('src', centerImgSrc);
-  rightImg.setAttribute('src', rightImgSrc);
+};
+function changeLevel(city, funcOne, funcTwo, funcThree) {
+  heading.textContent= city[0];
+  leftImg.setAttribute('src', city[1]);
+  centerImg.setAttribute('src', city[2]);
+  rightImg.setAttribute('src', city[3]);
   leftFunction = funcOne;
   centerFunction = funcTwo;
   rightFunction = funcThree;
   console.log('level changed to ' + city);
 }
 
-level-1
-=======
+
 function displayText(text) {
   var alert = document.createElement('p');
   alert.textContent(text);
   textBox.appendChild(alert);
 }
-development
+
+changeLevel(tacoma, takeBus,takeCar, snooze);
