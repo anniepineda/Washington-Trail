@@ -1,5 +1,27 @@
 'use strict';
 
+var choicePanel = document.getElementById('panel');
+
+function clickHandler(event) {
+  // console.log('Clicked! ', event.target.id);
+  switch(event.target.id) {
+    case 'leftImg':
+      console.log('you clicked on left');
+      break;
+    case 'centerImg':
+      console.log('you clicked on center');
+      break;
+    case 'rightImg':
+      console.log('you clicked on right');
+      break;
+    default:
+      console.log('blam', event.target.id);
+
+  }
+}
+
+choicePanel.addEventListener('click', clickHandler);
+
 // USERNAME
 //
 // function gets name from index.html text field for user name
@@ -233,8 +255,12 @@ function changeLevel(city, leftImgSrc, centerImgSrc, rightImgSrc, funcOne, funcT
   rightFunction = funcThree;
   console.log('level changed to ' + city);
 }
+
+level-1
+=======
 function displayText(text) {
   var alert = document.createElement('p');
   alert.textContent(text);
   textBox.appendChild(alert);
 }
+development
