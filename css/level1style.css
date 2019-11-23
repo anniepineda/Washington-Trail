@@ -58,12 +58,33 @@ nav {
 }
 
 #textbox {
+  
   background-color: black;
   border-radius: 5px;
   color: rgb(38, 247, 10);
-  height: 200px;
+  height: 400px;
   width: 1000px;
   z-index: 1;
+}
+
+#mapImage{
+float:right;
+padding: 10px;
+  background-color:rgb(38, 247, 10);
+  transition: transform .2s;
+
+  height: 250px;
+  width: 200px;
+  z-index: 999;
+  margin-bottom:90px;
+  margin-right: 50px;
+}
+
+#mapImage:hover{
+  
+  
+    transform: scale(1.5); 
+  
 }
 
 #video-container {
