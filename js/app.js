@@ -21,6 +21,7 @@ function clickHandler(event) {
 
 choicePanel.addEventListener('click', clickHandler);
 
+
 // USERNAME
 //
 // function gets name from index.html text field for user name
@@ -282,7 +283,7 @@ function changeLevel(city, funcOne, funcTwo, funcThree) {
 
 function displayText(text) {
   var alert = document.createElement("p");
-  alert.textContent(text);
+  alert.textContent = text;
   textBox.appendChild(alert);
 }
 
