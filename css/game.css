@@ -152,6 +152,7 @@ hr {
   width: 200px;
   margin-bottom:90px;
   margin-right: 50px;
+  border-radius: 10%;
 }
 
 #mapImage:hover{
