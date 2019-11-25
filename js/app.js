@@ -91,7 +91,7 @@ function getName() {
 // Get user name from local storage and set player name
 var localStorageUserName = localStorage.getItem('userName');
 
-//var player = JSON.parse(localStorageUserName); COMMENTED OUT FOR TESTIJNG
+var player = new Player(JSON.parse(localStorageUserName));
 
 
 // Player constructor function
@@ -410,3 +410,4 @@ function drawHealthBar(canvas, x, y, width, height, health, max) {
 }
 var healthBar = document.getElementById('healthbar').getContext('2d');
 drawHealthBar(healthBar, 10, 10, 200, 30, player.health, 100);
+changeLevel(home, takeBus, takeCar, snooze);
