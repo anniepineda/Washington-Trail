@@ -84,7 +84,8 @@ padding: 10px;
   
   
     transform: scale(1.5); 
-  
+  top:0 px;
+  bottom: 90px;
 }
 
 #video-container {
