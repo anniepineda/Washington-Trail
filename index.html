@@ -1,22 +1,69 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <title>Washington Trail</title>
+    <link rel=stylesheet href="css/reset.css" />
+    <link href="https://fonts.googleapis.com/css?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link rel=stylesheet href="css/index.css" />
 </head>
-
 <body>
     <header>
-        <h1>WASHINGTON TRAIL</h1>
     </header>
     <main>
-        <form action="level1.html">
-            <p>Enter your name:</p><input type="text" id="nameOfPlayer">
-            <input type="submit" value="Start Playing!" onclick="getName()" />
-        </form>
+        <img src="assets/logo.png" alt="Main logo" />
+        <span>Washington Trail Games Co</span>
+        <img src="assets/logo.png" alt="Main logo" />
+        <div id="tvBox">
+            <div id="grayScreen">
+                <div id="screenContent">
+                    <h3>-- Want to know the only way to beat Seattle traffic? --</h3>
+                    <h3>-- Play Washington Trail --</h3>
+                    <article>
+                        <p class="headerInOrange">=== Welcome to the Trail ===</p>
+                        <hr>
+                        <p class="gameContextInGreen">
+                            Imagine a world where every morning you get that sudden realization that you overslept
+                            your
+                            alarm. Before you check the time you know you are going to be late. Well the developers
+                            at
+                            Washington Trail Games Company are proud to capture these panicked moments into an
+                            interactive simulation. See if you got what it takes to survive the  commute.</p>
+                        <p class="headerInOrange">=== Here are the rules ===</p>
+                        <hr>
+                        <p class="gameContextInGreen">
+                            It's a long way to your destination in Seattle. At the beginning of the game you will be
+                            alotted a set amount of money, time, and health to make this perilous journey. There are
+                            five stages to navigate as you endure the harsh and unforgiving nature of local traffic.
+                            You
+                            will be forced to make difficult choices on this journey, so beware. If you can muster
+                            your
+                            wit, you just might make it to Seattle in time.
+                        </p>
+                        <p class="headerInOrange">=== Game creators ===</p>
+                        <hr>
+                        <ul class="gameContextInGreen">
+                            <li>Annie</li>
+                            <li>Micah</li>
+                            <li>Pete</li>
+                            <li>Shane</li>
+                            <li>Romell</li>
+                        </ul>
+                        <form action="level1.html">
+                            <p class="headerInOrange">=== Enter your name to Play ===</p>
+                            <hr>
+                            <input type="text" id="nameOfPlayer" required />
+                            <input type="submit" value="Start Playing!" onclick="getName()" />
+                        </form>
+                    </article>
+                    <div id="tvButton"></div>
+                </div>
+            </div>
+            <div id="tvFooterCompanyInfo">
+                <p>Washington Trail Games Company &copy Seattle WA 2019</p>
+            </div>
+        </div>
     </main>
-    <script src="js/app.js"></script>
+    <script src="js/index.js"></script>
 </body>
-
 </html>

@@ -1,0 +1,108 @@
+* {
+  box-sizing: border-box;
+  }
+body {
+  background-color: black;
+  }
+main {
+  text-align: center;
+}
+main img {
+  width: 186px;
+  height: 115px;
+  margin-left: 180px;
+  margin-right: 180px;
+}
+main span {
+  position: relative;
+  bottom: 25px;
+  font-family: 'Press Start 2P', cursive;
+  font-size: 30px;
+  color: #FFB000;
+  text-shadow: 2px 2px #FF0000;
+}
+hr {
+  border: 1px dashed #33FF33;
+  margin: 10px 0 10px 0;
+  padding: 1px 0 1px 0;
+}
+
+#tvBox {
+  margin: 0 auto;
+  height: 900px;
+  width: 1600px;
+  background-color: #654321;
+  border: 10px solid rgb(49, 16, 16);
+  border-radius: 5%;
+  z-index: -1;
+}
+#grayScreen {
+  margin: 0 auto;
+  margin-top: 10px;
+  height: 800px;
+  width: 1400px;
+  background-color: #3C393C;;
+  border: 5px solid black;
+  border-radius: 20%;
+  font-family: 'Press Start 2P', cursive;
+  color: #33FF33;
+  text-align: center;
+}
+
+#screenContent h3 {
+  font-size: 20px;
+}
+#screenContent hr {
+  margin: 10px 15% 10px 15%;
+}
+#screenContent p.headerInOrange {
+  color: #FFB000;
+  font-size: 20px;
+  margin-top: 30px;
+}
+#screenContent p.gameContextInGreen {
+  margin: 50px 10% 60px 10%;
+  transform: scale(1, 2.5);
+  text-align: justify;
+  font-size: 12px;
+}
+#screenContent ul li {
+  display: inline;
+  text-align: justify;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+input[type=submit] {
+  background-color: #33FF33;
+  color: #3C393C;
+  font-size: 12px;
+  font-family: 'Press Start 2P', cursive;
+  padding: 15px 10px 15px 10px;
+  text-decoration: none;
+  cursor: pointer;
+}
+input[type="text"] {
+  width: 300px;
+  border: none;
+  padding: 15px 15px 15px 15px;
+  font-family: 'Press Start 2P', cursive;
+  font-size: 20px;
+  color: #3C393C;
+  background-color: #33FF33;
+}
+#tvButton {
+  float: right;
+  height: 80px;
+  width: 80px;
+  background-color: grey;
+  border: 5px solid black;
+  border-radius: 50%;
+}
+#tvFooterCompanyInfo {
+  margin-top: 40px;
+  text-align: center;
+  font-family: 'Press Start 2P', cursive;
+  font-size: 15px;
+  text-shadow: 2px 2px #FF0000;
+  color: yellow;
+}
