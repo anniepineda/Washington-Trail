@@ -79,7 +79,6 @@ function clickHandler(event) {
   }
 }
 
-
 // USERNAME LOGIC
 // function gets name from index.html text field for user name
 function getName() {
@@ -92,7 +91,6 @@ function getName() {
 var localStorageUserName = localStorage.getItem('userName');
 
 var player = new Player(JSON.parse(localStorageUserName));
-
 
 // Player constructor function
 function Player(
@@ -109,12 +107,21 @@ function Player(
 // Player methods
 Player.prototype.changeMoney = function(delta) {
   this.money += delta;
+  if(player.money <= 0) {
+    gameOver('You ran out of money.');
+  }
 };
 Player.prototype.changeTime = function(delta) {
   this.time += delta;
+  if(player.time <= 0) {
+    gameOver('You ran out of time.');
+  }
 };
 Player.prototype.changeHealth = function(delta) {
   this.health += delta;
+  if(player.health <= 0) {
+    gameOver('You have died');
+  }
 };
 // function to roll 20 sided dice
 function rollD20() {
@@ -169,9 +176,11 @@ var takeCar = function() {
   if (roll >= 17) {
     displayText('You drive your car to Tacoma and make great time!');
     player.changeTime(-10);
+
     
     // nextLevel();
     
+
   } else if (roll >= 7) {
     displayText('You ride your bus to Tacoma, but there was some traffic.');
     player.changeTime(-20);
@@ -256,9 +265,9 @@ changeLevel(federalWay,rideMoped, takeBusFedWay, takeTrainFedWay);
 // *************************************End of Tacoma Logic
 
 
-
 // ********************************** FederalWay Logic Start*****************************
 //Bus Option
+
   var takeBusFedWay = function() {
      var roll = rollD20();
      if (roll > 17) {
@@ -318,21 +327,22 @@ changeLevel(federalWay,rideMoped, takeBusFedWay, takeTrainFedWay);
    changeLevel(seaTac,rideMoped, takeBusFedWay, takeTrainFedWay);
   };
 
+
 // *************************************End of Federal Way Logic
 
-
-
-
 function changeLevel(city, funcOne, funcTwo, funcThree) {
-  heading.textContent = city[0];
-  leftImg.setAttribute('src', city[1]);
-  centerImg.setAttribute('src', city[2]);
-  rightImg.setAttribute('src', city[3]);
-  mapImage.setAttribute('src', city[4]);
-  leftFunction = funcOne;
-  centerFunction = funcTwo;
-  rightFunction = funcThree;
-  console.log('level changed to ' + city);
+  if(player.health <= 0) {
+    gameOver(lost);
+  } else {
+    heading.textContent = city[0];
+    leftImg.setAttribute('src', city[1]);
+    centerImg.setAttribute('src', city[2]);
+    rightImg.setAttribute('src', city[3]);
+    mapImage.setAttribute('src', city[4]);
+    leftFunction = funcOne;
+    centerFunction = funcTwo;
+    rightFunction = funcThree;
+  }
 }
 // RENDERS TEXT TO TEXTBOX
 function displayText(text) {
@@ -343,7 +353,7 @@ function displayText(text) {
 
 // ENDS GAME AND DISPLAYS RESULT
 function gameOver(outcome) {
-  gameOverMsg.setAttribute('id','game-over');
+  gameOverMsg.setAttribute('id', 'game-over');
   gameOverResult.setAttribute('id', 'outcome');
   gameOverResult.textContent = outcome;
 
@@ -369,6 +379,7 @@ function gameOver(outcome) {
 //     player.changeMoney(amount);
 //   }
 // };
+
 var player = new Player('testPlayer');
 
 changeLevel(home, takeBus, takeCar, snooze);
@@ -395,4 +406,5 @@ function drawHealthBar(canvas, x, y, width, height, health, max) {
 var healthBar = document.getElementById('healthbar').getContext('2d');
 drawHealthBar(healthBar, 10, 10, 200, 30, player.health, 100);
 changeLevel(home, takeBus, takeCar, snooze);
+
 
