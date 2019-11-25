@@ -91,7 +91,7 @@ function getName() {
 // Get user name from local storage and set player name
 var localStorageUserName = localStorage.getItem('userName');
 
-//var player = JSON.parse(localStorageUserName); COMMENTED OUT FOR TESTIJNG
+var player = new Player(JSON.parse(localStorageUserName));
 
 
 // Player constructor function
@@ -386,5 +386,4 @@ function gameOver(outcome) {
 //     player.changeMoney(amount);
 //   }
 // };
-var player = new Player('testPlayer');
 changeLevel(home, takeBus, takeCar, snooze);
