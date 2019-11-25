@@ -87,9 +87,9 @@ var federalWay = [
 
 var seaTac = [
   'SeaTac',
-  'https://via.placeholder.com/150',
-  'https://via.placeholder.com/150',
-  'https://via.placeholder.com/150',
+  'assets/Level Images/carpool.jpg',
+  'assets/Level Images/Bus.jpg',
+  'assets/Level Images/Train.jpg',
   'assets/Maps/location3.png'
 ];
 var seattle = [
@@ -150,19 +150,19 @@ function Player(
 // Player methods
 Player.prototype.changeMoney = function (delta) {
   this.money += delta;
-  if(player.money <= 0) {
+  if (player.money <= 0) {
     gameOver('You ran out of money.');
   }
 };
 Player.prototype.changeTime = function (delta) {
   this.time += delta;
-  if(player.time <= 0) {
+  if (player.time <= 0) {
     gameOver('You ran out of time.');
   }
 };
 Player.prototype.changeHealth = function (delta) {
   this.health += delta;
-  if(player.health <= 0) {
+  if (player.health <= 0) {
     gameOver('You have died');
   }
 };
@@ -176,7 +176,7 @@ function rollD20() {
 
 
 // *******************************Home functions for intial level START ***************************
-var snooze = function() {
+var snooze = function () {
   var roll = rollD20();
   if (roll >= 18) {
     player.changeHealth(30);
@@ -316,7 +316,7 @@ var takeBus = function () {
     player.changeMoney(-1.5);
     changeLevel(tacoma);
   }
-  changeLevel(tacoma, takeBusTacoma,takeTrainTacoma, rideWithStranger);
+  changeLevel(tacoma, takeBusTacoma, takeTrainTacoma, rideWithStranger);
 };
 var takeCar = function () {
   var roll = rollD20();
@@ -324,22 +324,22 @@ var takeCar = function () {
     displayText('You drive your car to Tacoma and make great time!');
     player.changeTime(-10);
 
-    
+
     // nextLevel();
-    
+
 
   } else if (roll >= 7) {
     displayText('You ride your bus to Tacoma, but there was some traffic.');
     player.changeTime(-20);
-    
+
     // nextLevel();
-    changeLevel(tacoma, takeBusTacoma,takeTrainTacoma, rideWithStranger);
+    changeLevel(tacoma, takeBusTacoma, takeTrainTacoma, rideWithStranger);
   } else {
     displayText('Your car wouldn\'t start. You had to take the bus to BLANK.');
     player.changeTime(-45);
     player.changeMoney(-1.5);
   }
-  changeLevel(tacoma, takeBusTacoma,takeTrainTacoma, rideWithStranger);
+  changeLevel(tacoma, takeBusTacoma, takeTrainTacoma, rideWithStranger);
 };
 //*******************************Home functions for intial level END***********************
 
@@ -350,7 +350,7 @@ var takeCar = function () {
 
 // ********************************** Tacoma Logic Start*****************************
 //Bus Option
-var takeBusTacoma = function() {
+var takeBusTacoma = function () {
   var roll = rollD20();
   if (roll > 17) {
     displayText('Bus was running on all cylinders and arrived ahead of schedule in Federal Way');
@@ -365,48 +365,48 @@ var takeBusTacoma = function() {
     player.changeTime(-45);
     player.changeHealth(-10);
     player.changeMoney(-10);
- }
- changeLevel(federalWay,rideMoped, takeBusFedWay, takeTrainFedWay);
+  }
+  changeLevel(federalWay, rideMoped, takeBusFedWay, takeTrainFedWay);
 };
 
 //Train Option
-var takeTrainTacoma = function() {
- var roll = rollD20();
- if (roll > 15) {
-   displayText('Train is ahead of schedule and you made it to Federal Way in record time');
-   player.changeTime(-5);
-   player.changeMoney(-15);
- } else if (roll >= 5) {
-   displayText('The train is very busy but makes decent time');
-   player.changeTime(-10);
-   player.changeMoney(-15);
- } else {
-   displayText('The train was on the wrong tracks you have to wait for it to switch. You also get over-charged for your ticket');
-   player.changeTime(-45);
-   player.changeHealth(-10);
-   player.changeMoney(-30);
-}
-changeLevel(federalWay,rideMoped, takeBusFedWay, takeTrainFedWay);
+var takeTrainTacoma = function () {
+  var roll = rollD20();
+  if (roll > 15) {
+    displayText('Train is ahead of schedule and you made it to Federal Way in record time');
+    player.changeTime(-5);
+    player.changeMoney(-15);
+  } else if (roll >= 5) {
+    displayText('The train is very busy but makes decent time');
+    player.changeTime(-10);
+    player.changeMoney(-15);
+  } else {
+    displayText('The train was on the wrong tracks you have to wait for it to switch. You also get over-charged for your ticket');
+    player.changeTime(-45);
+    player.changeHealth(-10);
+    player.changeMoney(-30);
+  }
+  changeLevel(federalWay, rideMoped, takeBusFedWay, takeTrainFedWay);
 };
 
 //Moped with stranger option 
-var rideWithStranger = function() {
- var roll = rollD20();
- if (roll > 17) {
-   displayText('The stranger ended up actually being very reliable, you zoomed to Federal Way without issue, but they charged you 15$');
-   player.changeTime(-5);
-   player.changeMoney(-15);
- } else if (roll >= 5) {
-   displayText('The stranger was very odd, but you still made it there ontime. The driver charged you 15$');
-   player.changeTime(-10);
-   player.changeMoney(-15);
- } else {
-   displayText('Big mistake.... Stranger got lost and took all morning to find Federal Way. You still got charged 15$');
-   player.changeTime(-45);
-   player.changeHealth(-50);
-   player.changeMoney(-15);
-}
-changeLevel(federalWay,rideMoped, takeBusFedWay, takeTrainFedWay);
+var rideWithStranger = function () {
+  var roll = rollD20();
+  if (roll > 17) {
+    displayText('The stranger ended up actually being very reliable, you zoomed to Federal Way without issue, but they charged you 15$');
+    player.changeTime(-5);
+    player.changeMoney(-15);
+  } else if (roll >= 5) {
+    displayText('The stranger was very odd, but you still made it there ontime. The driver charged you 15$');
+    player.changeTime(-10);
+    player.changeMoney(-15);
+  } else {
+    displayText('Big mistake.... Stranger got lost and took all morning to find Federal Way. You still got charged 15$');
+    player.changeTime(-45);
+    player.changeHealth(-50);
+    player.changeMoney(-15);
+  }
+  changeLevel(federalWay, rideMoped, takeBusFedWay, takeTrainFedWay);
 };
 
 // *************************************End of Tacoma Logic
@@ -471,64 +471,64 @@ var rideMoped = function () {
   }
 };
 
-  var takeBusFedWay = function() {
-     var roll = rollD20();
-     if (roll > 17) {
-       displayText('Bus ran through some stoplights and you made it there quick!');
-       player.changeTime(-10);
-       player.changeMoney(-5);
-     } else if (roll >= 7) {
-       displayText('Bus driver is newer and goes slow figuring out his route');
-       player.changeTime(-20);
-       player.changeMoney(-5);
-     } else {
-       displayText('Bus tire is flat you had to wait for next one, big loss of time and frustraion');
-       player.changeTime(-45);
-       player.changeHealth(-10);
-       player.changeMoney(-10);
-    }
-    changeLevel(seaTac,rideMoped, takeBusFedWay, takeTrainFedWay);
-   };
+var takeBusFedWay = function () {
+  var roll = rollD20();
+  if (roll > 17) {
+    displayText('Bus ran through some stoplights and you made it there quick!');
+    player.changeTime(-10);
+    player.changeMoney(-5);
+  } else if (roll >= 7) {
+    displayText('Bus driver is newer and goes slow figuring out his route');
+    player.changeTime(-20);
+    player.changeMoney(-5);
+  } else {
+    displayText('Bus tire is flat you had to wait for next one, big loss of time and frustraion');
+    player.changeTime(-45);
+    player.changeHealth(-10);
+    player.changeMoney(-10);
+  }
+  changeLevel(seaTac, rideMoped, takeBusFedWay, takeTrainFedWay);
+};
 
-   //Train Option
-   var takeTrainFedWay = function() {
-    var roll = rollD20();
-    if (roll > 15) {
-      displayText('Train is running smoothly this morning, you practically flew to your next stop!');
-      player.changeTime(-5);
-      player.changeMoney(-15);
-    } else if (roll >= 5) {
-      displayText('The train is a little behind, but not much');
-      player.changeTime(-10);
-      player.changeMoney(-15);
-    } else {
-      displayText('The train breaks down, you have to wait for another one to arrive. You also get charged for two train tickets');
-      player.changeTime(-45);
-      player.changeHealth(-10);
-      player.changeMoney(-30);
-   }
-   changeLevel(seaTac,rideMoped, takeBusFedWay, takeTrainFedWay);
-  };
+//Train Option
+var takeTrainFedWay = function () {
+  var roll = rollD20();
+  if (roll > 15) {
+    displayText('Train is running smoothly this morning, you practically flew to your next stop!');
+    player.changeTime(-5);
+    player.changeMoney(-15);
+  } else if (roll >= 5) {
+    displayText('The train is a little behind, but not much');
+    player.changeTime(-10);
+    player.changeMoney(-15);
+  } else {
+    displayText('The train breaks down, you have to wait for another one to arrive. You also get charged for two train tickets');
+    player.changeTime(-45);
+    player.changeHealth(-10);
+    player.changeMoney(-30);
+  }
+  changeLevel(seaTac, rideMoped, takeBusFedWay, takeTrainFedWay);
+};
 
-  //Moped with stranger option 
-  var rideMoped = function() {
-    var roll = rollD20();
-    if (roll > 17) {
-      displayText('The risk payed off the moped ended up weaving in and out of traffic to save you time, but they charged you 15$');
-      player.changeTime(-5);
-      player.changeMoney(-15);
-    } else if (roll >= 5) {
-      displayText('The moped ride was weird, but it made it in average time. The driver charged you 15$');
-      player.changeTime(-10);
-      player.changeMoney(-15);
-    } else {
-      displayText('The moped was a horrible idea, it almost immediately crashed into the stoplight. You still got charged 15$');
-      player.changeTime(-45);
-      player.changeHealth(-50);
-      player.changeMoney(-15);
-   }
-   changeLevel(seaTac,rideMoped, takeBusFedWay, takeTrainFedWay);
-  };
+//Moped with stranger option 
+var rideMoped = function () {
+  var roll = rollD20();
+  if (roll > 17) {
+    displayText('The risk payed off the moped ended up weaving in and out of traffic to save you time, but they charged you 15$');
+    player.changeTime(-5);
+    player.changeMoney(-15);
+  } else if (roll >= 5) {
+    displayText('The moped ride was weird, but it made it in average time. The driver charged you 15$');
+    player.changeTime(-10);
+    player.changeMoney(-15);
+  } else {
+    displayText('The moped was a horrible idea, it almost immediately crashed into the stoplight. You still got charged 15$');
+    player.changeTime(-45);
+    player.changeHealth(-50);
+    player.changeMoney(-15);
+  }
+  changeLevel(seaTac, rideMoped, takeBusFedWay, takeTrainFedWay);
+};
 
 
 // *************************************End of Federal Way Logic
@@ -552,7 +552,7 @@ var takeBusSeaTac = function () {
     player.changeHealth(-15);
     player.changeMoney(-0);
   }
-  changeLevel(seattle,takeBusSeaTac,takeTrainSeaTac,CarpoolSeaTac);
+  changeLevel(seattle, takeBusSeaTac, takeTrainSeaTac, CarpoolSeaTac);
 };
 
 //Train Option//
@@ -572,7 +572,7 @@ var takeTrainSeaTac = function () {
     player.changeHealth(-15);
     player.changeMoney(-0);
   }
-  changeLevel(seattle,takeBusSeaTac,takeTrainSeaTac,CarpoolSeaTac);
+  changeLevel(seattle, takeBusSeaTac, takeTrainSeaTac, CarpoolSeaTac);
 };
 
 //Carpool
@@ -592,7 +592,7 @@ var CarpoolSeaTac = function () {
     player.changeHealth(-9);
     player.changeMoney(-0);
   }
-  changeLevel(seattle,takeBusSeaTac,takeTrainSeaTac,CarpoolSeaTac);
+  changeLevel(seattle, takeBusSeaTac, takeTrainSeaTac, CarpoolSeaTac);
 };
 
 
@@ -600,7 +600,7 @@ var CarpoolSeaTac = function () {
 
 ////////////////--------------------------------------------------------
 function changeLevel(city, funcOne, funcTwo, funcThree) {
-  if(player.health <= 0) {
+  if (player.health <= 0) {
     gameOver(lost);
   } else {
     heading.textContent = city[0];
@@ -659,18 +659,18 @@ document.getElementById('player-data').appendChild(playerInfo);
 function drawHealthBar(canvas, x, y, width, height, health, max) {
 
   canvas.fillStyle = '#000000';
-  canvas.fillRect(x,y,width,height);
+  canvas.fillRect(x, y, width, height);
 
-  var colorNumber = Math.round((1-(health/max)) * 0xff) * 0x10000 + Math.round((health/max) * 0xff) * 0x100;
+  var colorNumber = Math.round((1 - (health / max)) * 0xff) * 0x10000 + Math.round((health / max) * 0xff) * 0x100;
   var colorString = colorNumber.toString(16);
   if (colorNumber >= 0x100000) {
     canvas.fillStyle = '#' + colorString;
   } else if (colorNumber << 0x100000 && colorNumber >= 0x10000) {
-    canvas.fillStyle = '#0'+colorString;
+    canvas.fillStyle = '#0' + colorString;
   } else if (colorNumber << 0x10000) {
-    canvas.fillStyle = '#00'+colorString;
+    canvas.fillStyle = '#00' + colorString;
   }
-  canvas.fillRect(x+1,y+1,(health/max)*(width-2),height-2);
+  canvas.fillRect(x + 1, y + 1, (health / max) * (width - 2), height - 2);
 }
 var healthBar = document.getElementById('healthbar').getContext('2d');
 drawHealthBar(healthBar, 10, 10, 200, 30, player.health, 100);
