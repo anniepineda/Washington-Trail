@@ -66,6 +66,7 @@ hr {
 }
 
 #screenContent h3 {
+  line-height: 40px;
   font-size: 26px;
 }
 
@@ -80,16 +81,16 @@ hr {
 }
 
 #screenContent p.gameContextInGreen {
-  margin: 75px 5% 75px 5%;
-  transform: scale(1, 2.5);
+  margin: 25px 5% 25px 5%;
+  line-height: 25px;
   text-align: justify;
-  font-size: 16px;
+  font-size: 26px;
 }
 
 #screenContent ul li {
   display: inline;
   text-align: justify;
-  font-size: 16px;
+  font-size: 20px;
   margin-left: 20px;
   margin-right: 20px;
 }
@@ -120,4 +121,10 @@ input[type="text"] {
   font-size: 15px;
   text-shadow: 2px 2px #FF0000;
   color: yellow;
+}
+
+.alert {
+  padding: 20px;
+  background-color: #f44336;
+  color: white;
 }
