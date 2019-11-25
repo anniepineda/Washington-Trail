@@ -8,65 +8,49 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
+<body>
+  <header>
+    <img src="assets/logo.png" alt="Main logo" />
+    <span>Washington Trail Games Co</span>
+    <img src="assets/logo.png" alt="Main logo" />
+  </header>
+  <main>
+    <div id="tvBox">
+      <div id="grayScreen">
+        <div id="screenContent">
 
-<header>
-  <img src="assets/logo.png" alt="Main logo" />
-  <span>Washington Trail Games Co</span>
-  <img src="assets/logo.png" alt="Main logo" />
-</header>
-<main>
-  <div id="tvBox">
-    <div id="grayScreen">
-      <div id="screenContent">
+          <div id="player-data">
+            PLAYER DATA GOES HERE
+          </div>
+
 
         <div id="player-data">
           PLAYER DATA GOES HERE
+          <canvas id="healthbar" width="250" height="40"></canvas>
         </div>
 
-        <h1 id='heading'>Make you choice!!!</h1>
+          <div id="panel">
+            <h1 id='heading'></h1>
+            <img id="leftImg" src="https://placehold.it/300x400/ddd" />
+            <img id="centerImg" src="https://placehold.it/300x400/ddd" />
+            <img id="rightImg" src="https://placehold.it/300x400/ddd" />
+          </div>
 
-        <div id="panel">
-          <img id="leftImg" src="https://placehold.it/300x400/ddd" alt="" height="150" width="150">
-          <img id="centerImg" src="https://placehold.it/300x400/ddd" alt="" height="150" width="150">
-          <img id="rightImg" src="https://placehold.it/300x400/ddd" alt="" height="150" width="150">
+          <div id="gameOutput">
+            <p>-== PLAYER STATUS ==-</p>
+          </div>
+          <img id="mapImage" src="assets/Maps/Start.png">
+          <p id="no-display-1">GAME OVER</p>
+          <p id="no-display-2"></p>
+
         </div>
-
-        <div id="gameOutput">
-          <p>You died from disentary</p>
-          <img id="mapImage">
-        </div>
-
+      </div>
+      <div id="tvFooterCompanyInfo">
+        <p>Washington Trail Games Company &copy Seattle WA 2019</p>
       </div>
     </div>
-    <div id="tvFooterCompanyInfo">
-      <p>Washington Trail Games Company &copy Seattle WA 2019</p>
-    </div>
-  </div>
-</main>
+  </main>
+  <script src="js/app.js"></script>
 </body>
 
 </html>
-
-
-<!-- <body>
-  <header>
-    <nav>
-      
-    </nav>
-  </header>
-  <main>
-    
-    
-  
-    <div id="video-container">
-      <video autoplay muted loop id="background">
-        <source src="assets/rain.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-      </video>
-    </div>
-    
-
-  </main>
-  
-  
-</body> -->

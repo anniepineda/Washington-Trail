@@ -1,5 +1,6 @@
 'use strict';
 
+<<<<<<< HEAD
 var choicePanel = document.getElementById("panel");
 
 function clickHandler(event) {
@@ -39,60 +40,114 @@ var localStorageUserName = localStorage.getItem("userName");
 
 //var player = JSON.parse(localStorageUserName); COMMENTED OUT FOR TESTIJNG
 
+=======
+>>>>>>> b187e625cad00b50df7f3928ba19959f1e7e8c5c
 // Starting player attributes should be determined by level, default levels set in player constructor function.
 var startingMoney;
 var startingTime;
 var startingHealth;
-var heading = document.getElementById("heading");
-var leftImg = document.getElementById("leftImg");
-var centerImg = document.getElementById("centerImg");
-var rightImg = document.getElementById("rightImg");
 var leftFunction;
 var centerFunction;
 var rightFunction;
-var textBox = document.getElementById("textbox");
+var won = 'You won!';
+var lost = 'You lost!';
+var heading = document.getElementById('heading');
+var leftImg = document.getElementById('leftImg');
+var centerImg = document.getElementById('centerImg');
+var rightImg = document.getElementById('rightImg');
+var textBox = document.getElementById('gameOutput');
 var mapImage = document.getElementById('mapImage');
+<<<<<<< HEAD
 
 /////// ARRAYS THAT HOLD THE LOCATION INFORMATION TO BE FED INTO LEVELCHANGE FUNCTION.///////
+=======
+var choicePanel = document.getElementById('panel');
+var gameOverMsg = document.getElementById('no-display-1');
+var gameOverResult = document.getElementById('no-display-2');
+choicePanel.addEventListener('click', clickHandler);
+// ARRAYS THAT HOLD THE LOCATION INFORMATION TO BE FED INTO LEVELCHANGE FUNCTION.
+>>>>>>> b187e625cad00b50df7f3928ba19959f1e7e8c5c
 var home = [
-  "Home",
-  "https://via.placeholder.com/150",
-  "https://via.placeholder.com/150",
-  "https://via.placeholder.com/150",
-  "Start.png"
+  'Home',
+  'https://via.placeholder.com/150',
+  'https://via.placeholder.com/150',
+  'https://via.placeholder.com/150',
+  'assets/Maps/Start.png'
 ];
 var tacoma = [
-  "Tacoma",
-  "https://via.placeholder.com/150",
-  "https://via.placeholder.com/150",
-  "https://via.placeholder.com/150",
-  "location1.png"
+  'Tacoma',
+  'https://via.placeholder.com/150',
+  'https://via.placeholder.com/150',
+  'https://via.placeholder.com/150',
+  'assets/Maps/location1.png'
 ];
 var federalWay = [
+
   "Federal Way",
-  "https://via.placeholder.com/150",
-  "https://via.placeholder.com/150",
-  "https://via.placeholder.com/150",
+  "assets/Level Images/Moped.jpg",
+  "assets/Level Images/Bus.jpg",
+  "assets/Level Images/Train.jpg",
   "location2.png"
+
 ];
 var seaTac = [
-  "SeaTac",
-  "https://via.placeholder.com/150",
-  "https://via.placeholder.com/150",
-  "https://via.placeholder.com/150",
-  "location3.png"
+  'SeaTac',
+  'https://via.placeholder.com/150',
+  'https://via.placeholder.com/150',
+  'https://via.placeholder.com/150',
+  'assets/Maps/location3.png'
 ];
 var seattle = [
-  "Seattle",
-  "https://via.placeholder.com/150",
-  "https://via.placeholder.com/150",
-  "https://via.placeholder.com/150",
-  "End.png"
+  'Seattle',
+  'https://via.placeholder.com/150',
+  'https://via.placeholder.com/150',
+  'https://via.placeholder.com/150',
+  'assets/Maps/End.png'
 ];
 
+<<<<<<< HEAD
 /////// Player constructor function////////
+=======
+// CLICK HANDLER
+function clickHandler(event) {
+  // console.log('Clicked! ', event.target.id);
+  switch (event.target.id) {
+    case 'leftImg':
+      console.log('you clicked on left');
+      leftFunction();
+      break;
+    case 'centerImg':
+      console.log('you clicked on center');
+      centerFunction();
+      break;
+    case 'rightImg':
+      console.log('you clicked on right');
+      rightFunction();
+      break;
+    default:
+      console.log('blam', event.target.id);
+  }
+}
+
+
+// USERNAME LOGIC
+// function gets name from index.html text field for user name
+function getName() {
+  var userNameInputElement = document.getElementById('nameOfPlayer');
+  var userName = userNameInputElement.value;
+  var nameJSON = JSON.stringify(userName);
+  localStorage.setItem('userName', nameJSON);
+}
+// Get user name from local storage and set player name
+var localStorageUserName = localStorage.getItem('userName');
+
+var player = new Player(JSON.parse(localStorageUserName));
+
+
+// Player constructor function
+>>>>>>> b187e625cad00b50df7f3928ba19959f1e7e8c5c
 function Player(
-  playerName = "Player 1",
+  playerName = 'Player 1',
   startingMoney = 5.0,
   startingTime = 180,
   startingHealth = 100
@@ -112,6 +167,7 @@ Player.prototype.changeTime = function (delta) {
 Player.prototype.changeHealth = function (delta) {
   this.health += delta;
 };
+// function to roll 20 sided dice
 function rollD20() {
   var roll = Math.floor(Math.random() * 20 + 1);
   return roll;
@@ -122,15 +178,15 @@ var snooze = function () {
   if (roll >= 18) {
     player.changeHealth(30);
     player.changeTime(-15);
-    displayText("You got an extra 15 minutes of sleep and feel amazing!");
+    displayText('You got an extra 15 minutes of sleep and feel amazing!');
   } else if (roll >= 2) {
     player.changeHealth(15);
     player.changeTime(-15);
-    displayText("You got some extra sleep! Feeling good.");
+    displayText('You got some extra sleep! Feeling good.');
   } else {
     player.health = 0;
     displayText(
-      "While reaching for the alarm you slipped out of bed and broke your neck. Game over."
+      'While reaching for the alarm you slipped out of bed and broke your neck. Game over.'
     );
     // endGame('lose');
   }
@@ -139,109 +195,99 @@ var talkToStranger = function () {
   var roll = rollD20();
   if (roll == 20) {
     var answer = prompt(
-      "The stranger has offered you a ride. Do you accept? Yes/No"
+      'The stranger has offered you a ride. Do you accept? Yes/No'
     );
     strangeJourney(answer);
   } else if (roll >= 2) {
     displayText(
-      "The stranger rambles on and on about UFOs until you slowly back away."
+      'The stranger rambles on and on about UFOs until you slowly back away.'
     );
     player.changeTime(-10);
-    // removeAction();
   } else {
-    displayText("The stranger stabs you.");
+    displayText('The stranger stabs you.');
     player.changeHealth(-50);
     player.changeTime(-5);
-    // removeAction();
   }
 };
 var strangeJourney = function (answer) {
   var roll = rollD20();
-  if (answer.toUpperCase() === "YES") {
+  if (answer.toUpperCase() === 'YES') {
     if (roll == 20) {
-      displayText("The stranger gives you a ride straight to work! You win!");
+      displayText('The stranger gives you a ride straight to work! You win!');
       // endGame('win');
     } else if (roll >= 10) {
-      displayText("The stranger gives you a ride to BLANK.");
+      displayText('The stranger gives you a ride to BLANK.');
       player.changeTime(-5);
       // nextLevel();
     } else {
-      displayText("You are never seen again");
+      displayText('You are never seen again');
       player.health = 0;
       // endGame('lose');
     }
-  } else if (answer.toUpperCase() === "NO") {
+  } else if (answer.toUpperCase() === 'NO') {
     if (roll == 20) {
-      displayText("The stranger gives you some money instead!");
+      displayText('The stranger gives you some money instead!');
       player.changeMoney(10);
       player.changeTime(-5);
-      // removeAction();
     } else if (roll >= 2) {
-      displayText("The stranger goes on his way.");
+      displayText('The stranger goes on his way.');
       player.changeTime(-5);
-      // removeAction();
     } else {
-      displayText("The stranger is offended and stabs you.");
+      displayText('The stranger is offended and stabs you.');
       player.changeHealth(-50);
       player.changeTime(-5);
-      // removeAction();
     }
   } else {
-    displayText("Invalid answer");
+    displayText('Invalid answer');
     player.changeTime(-1);
-    strangeJourney(prompt("Try again"));
+    strangeJourney(prompt('Try again'));
   }
 };
 var searchSeatCustion = function () {
   var roll = rollD20();
   if (roll == 20) {
     var answer = prompt(
-      "You have found a strange looking mushroom. Eat the mushroom? Yes/No"
+      'You have found a strange looking mushroom. Eat the mushroom? Yes/No'
     );
-    if (answer.toUpperCase() === "YES") {
+    if (answer.toUpperCase() === 'YES') {
       eatMushroom();
-    } else if (answer.toUpperCase() === "NO") {
-      displayText("You are overcome with a desire to eat the mushroom.");
+    } else if (answer.toUpperCase() === 'NO') {
+      displayText('You are overcome with a desire to eat the mushroom.');
       eatMushroom();
     } else {
       displayText(
-        "While you were failing to enter a valid input, you accidentally ate the mushroom."
+        'While you were failing to enter a valid input, you accidentally ate the mushroom.'
       );
       eatMushroom();
     }
   } else if (roll >= 10) {
-    displayText("You found a dollar!");
+    displayText('You found a dollar!');
     player.changeMoney(1);
-    // removeAction();
   } else if (roll >= 2) {
-    displayText("You found 35 cents.");
+    displayText('You found 35 cents.');
     player.changeMoney(0.35);
-    // removeAction();
   } else {
-    displayText("You accidentally stab yourself on a used needle.");
+    displayText('You accidentally stab yourself on a used needle.');
     player.changeHealth(-25);
-    // removeAction();
   }
 };
 // HELPER FUNCTION, DOESNT NEED TO BE LOADED TO LEVEL
 function eatMushroom() {
   var roll = rollD20();
-  displayText("Hmmm... This mushroom tastes kinda funny.");
+  displayText('Hmmm... This mushroom tastes kinda funny.');
   if (roll == 20) {
     displayText(
-      "You have ascended to another realm of consciousness. Where were you going anyways? It doesn't matter."
+      'You have ascended to another realm of consciousness. Where were you going anyways? It doesn\'t matter.'
     );
     // endGame('win');
   } else if (roll >= 10) {
-    displayText("You feel refreshed");
+    displayText('You feel refreshed');
     player.changeHealth(roll);
-    // removeAction();
   } else if (roll >= 2) {
-    displayText("Ughh... That mushroom made you feel sick.");
+    displayText('Ughh... That mushroom made you feel sick.');
     player.changeHealth(roll * -1);
-    // removeAction();
   } else {
-    displayText("You have died.");
+    displayText('You have died.');
     player.health = 0;
     // endGame();
   }
@@ -249,18 +295,18 @@ function eatMushroom() {
 var takeBus = function () {
   var roll = rollD20();
   if (roll >= 17) {
-    displayText("You caught the earlier bus and managed to take a quick nap!");
+    displayText('You caught the earlier bus and managed to take a quick nap!');
     player.changeTime(-15);
     player.changeHealth(5);
     player.changeMoney(-1.5);
-    changeLevel(tacoma)
+    changeLevel(tacoma);
   } else if (roll >= 5) {
-    displayText("You ride the bus to BLANK.");
+    displayText('You ride the bus to BLANK.');
     player.changeTime(-30);
     player.changeMoney(-1.5);
-    changeLevel(tacoma)
+    changeLevel(tacoma);
   } else {
-    displayText("You missed the bus and had to wait for the next one.");
+    displayText('You missed the bus and had to wait for the next one.');
     player.changeTime(-45);
     player.changeMoney(-1.5);
     changeLevel(tacoma);
@@ -269,15 +315,15 @@ var takeBus = function () {
 var takeCar = function () {
   var roll = rollD20();
   if (roll >= 17) {
-    displayText("You drive your car to BLANK and make great time!");
+    displayText('You drive your car to BLANK and make great time!');
     player.changeTime(-10);
     // nextLevel();
   } else if (roll >= 7) {
-    displayText("You ride your bus to BLANK, but there was some traffic.");
+    displayText('You ride your bus to BLANK, but there was some traffic.');
     player.changeTime(-20);
     // nextLevel();
   } else {
-    displayText("Your car wouldn't start. You had to take the bus to BLANK.");
+    displayText('Your car wouldn\'t start. You had to take the bus to BLANK.');
     player.changeTime(-45);
     player.changeMoney(-1.5);
   }
@@ -409,18 +455,70 @@ changeLevel(seattle,takeBusSeaTac,takeTrainSeaTac,CarpoolSeaTac);
 ////////////////--------------------------------------------------------
 function changeLevel(city, funcOne, funcTwo, funcThree) {
   heading.textContent = city[0];
-  leftImg.setAttribute("src", city[1]);
-  centerImg.setAttribute("src", city[2]);
-  rightImg.setAttribute("src", city[3]);
-  mapImage.setAttribute("src", city[4]);
+  leftImg.setAttribute('src', city[1]);
+  centerImg.setAttribute('src', city[2]);
+  rightImg.setAttribute('src', city[3]);
+  mapImage.setAttribute('src', city[4]);
   leftFunction = funcOne;
   centerFunction = funcTwo;
   rightFunction = funcThree;
-  console.log("level changed to " + city);
+  console.log('level changed to ' + city);
 }
-
+// RENDERS TEXT TO TEXTBOX
 function displayText(text) {
-  var alert = document.createElement("p");
+  var alert = document.createElement('p');
   alert.textContent = text;
   textBox.appendChild(alert);
 }
+
+// ENDS GAME AND DISPLAYS RESULT
+function gameOver(outcome) {
+  gameOverMsg.setAttribute('id','game-over');
+  gameOverResult.setAttribute('id', 'outcome');
+  gameOverResult.textContent = outcome;
+}
+// ACTION FUNCTION TEMPLATE
+// var functionName = function() {
+//   var roll = rollD20();
+//   if (roll > number) {
+//     displayText('INSERT TEXT HERE');
+//     player.changeTime(amount);
+//     player.changeHealth(amount);
+//     player.changeMoney(amount);
+//   } else if (roll >= number2) {
+//     displayText('INSERT TEXT HERE');
+//     player.changeTime(amount);
+//     player.changeHealth(amount);
+//     player.changeMoney(amount);
+//   } else {
+//     displayText('INSERT TEXT HERE');
+//     player.changeTime(amount);
+//     player.changeHealth(amount);
+//     player.changeMoney(amount);
+//   }
+// };
+var player = new Player('testPlayer');
+changeLevel(home, takeBus, takeCar, snooze);
+var playerInfo = document.createElement('span');
+playerInfo.textContent = player.name;
+document.getElementById('player-data').appendChild(playerInfo);
+// Player healthbar
+function drawHealthBar(canvas, x, y, width, height, health, max) {
+
+  canvas.fillStyle = '#000000';
+  canvas.fillRect(x,y,width,height);
+
+  var colorNumber = Math.round((1-(health/max)) * 0xff) * 0x10000 + Math.round((health/max) * 0xff) * 0x100;
+  var colorString = colorNumber.toString(16);
+  if (colorNumber >= 0x100000) {
+    canvas.fillStyle = '#' + colorString;
+  } else if (colorNumber << 0x100000 && colorNumber >= 0x10000) {
+    canvas.fillStyle = '#0'+colorString;
+  } else if (colorNumber << 0x10000) {
+    canvas.fillStyle = '#00'+colorString;
+  }
+  canvas.fillRect(x+1,y+1,(health/max)*(width-2),height-2);
+}
+var healthBar = document.getElementById('healthbar').getContext('2d');
+drawHealthBar(healthBar, 10, 10, 200, 30, player.health, 100);
+changeLevel(home, takeBus, takeCar, snooze);
