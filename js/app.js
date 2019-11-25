@@ -13,7 +13,7 @@ var heading = document.getElementById('heading');
 var leftImg = document.getElementById('leftImg');
 var centerImg = document.getElementById('centerImg');
 var rightImg = document.getElementById('rightImg');
-var textBox = document.getElementById('textbox');
+var textBox = document.getElementById('gameOutput');
 var mapImage = document.getElementById('mapImage');
 var choicePanel = document.getElementById('panel');
 var gameOverMsg = document.getElementById('no-display-1');
@@ -25,35 +25,35 @@ var home = [
   'https://via.placeholder.com/150',
   'https://via.placeholder.com/150',
   'https://via.placeholder.com/150',
-  'Start.png'
+  'assets/Maps/Start.png'
 ];
 var tacoma = [
   'Tacoma',
   'https://via.placeholder.com/150',
   'https://via.placeholder.com/150',
   'https://via.placeholder.com/150',
-  'location1.png'
+  'assets/Maps/location1.png'
 ];
 var federalWay = [
   'Federal Way',
   'https://via.placeholder.com/150',
   'https://via.placeholder.com/150',
   'https://via.placeholder.com/150',
-  'location2.png'
+  'assets/Maps/location2.png'
 ];
 var seaTac = [
   'SeaTac',
   'https://via.placeholder.com/150',
   'https://via.placeholder.com/150',
   'https://via.placeholder.com/150',
-  'location3.png'
+  'assets/Maps/location3.png'
 ];
 var seattle = [
   'Seattle',
   'https://via.placeholder.com/150',
   'https://via.placeholder.com/150',
   'https://via.placeholder.com/150',
-  'End.png'
+  'assets/Maps/End.png'
 ];
 
 // CLICK HANDLER
@@ -383,4 +383,5 @@ function gameOver(outcome) {
 //     player.changeMoney(amount);
 //   }
 // };
-var player = new Player('testPlayer');v
+var player = new Player('testPlayer');
+changeLevel(home, takeBus, takeCar, snooze);
