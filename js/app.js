@@ -69,27 +69,27 @@ choicePanel.addEventListener('click', clickHandler);
 >>>>>>> b187e625cad00b50df7f3928ba19959f1e7e8c5c
 var home = [
   'Home',
-  'https://via.placeholder.com/150',
-  'https://via.placeholder.com/150',
-  'https://via.placeholder.com/150',
-  'assets/Maps/Start.png'
+
+  'assets/Level Images/Snooze.jpeg',
+  'assets/Level Images/Bus.jpg',
+  'assets/Level Images/Car.jpg',
+  'Start.png'
 ];
 var tacoma = [
   'Tacoma',
-  'https://via.placeholder.com/150',
-  'https://via.placeholder.com/150',
-  'https://via.placeholder.com/150',
-  'assets/Maps/location1.png'
+  'assets/Level Images/Bus.jpg',
+  'assets/Level Images/Train.jpg',
+  'assets/Level Images/Stranger.jpg',
+  'location1.png'
 ];
 var federalWay = [
-
-  "Federal Way",
-  "assets/Level Images/Moped.jpg",
-  "assets/Level Images/Bus.jpg",
-  "assets/Level Images/Train.jpg",
-  "location2.png"
-
+  'Federal Way',
+  'assets/Level Images/Moped.jpg',
+  'assets/Level Images/Bus.jpg',
+  'assets/Level Images/Train.jpg',
+  'location2.png'
 ];
+
 var seaTac = [
   'SeaTac',
   'https://via.placeholder.com/150',
@@ -172,17 +172,25 @@ function rollD20() {
   var roll = Math.floor(Math.random() * 20 + 1);
   return roll;
 }
+<<<<<<< HEAD
 //////// LIBRARY OF ACTIONS//////////
 var snooze = function () {
+=======
+// LIBRARY OF ACTIONS
+
+
+// *******************************Home functions for intial level START ***************************
+var snooze = function() {
+>>>>>>> 7b16b8fb2a3aebff24c8659907a8bac0695f3fa0
   var roll = rollD20();
   if (roll >= 18) {
     player.changeHealth(30);
     player.changeTime(-15);
-    displayText('You got an extra 15 minutes of sleep and feel amazing!');
+    displayText('You got an extra 15 minutes of sleep and feel amazing! Pick again.');
   } else if (roll >= 2) {
     player.changeHealth(15);
     player.changeTime(-15);
-    displayText('You got some extra sleep! Feeling good.');
+    displayText('You got some extra sleep! Feeling good. Pick again!');
   } else {
     player.health = 0;
     displayText(
@@ -191,6 +199,7 @@ var snooze = function () {
     // endGame('lose');
   }
 };
+<<<<<<< HEAD
 var talkToStranger = function () {
   var roll = rollD20();
   if (roll == 20) {
@@ -293,6 +302,9 @@ function eatMushroom() {
   }
 }
 var takeBus = function () {
+=======
+var takeBus = function() {
+>>>>>>> 7b16b8fb2a3aebff24c8659907a8bac0695f3fa0
   var roll = rollD20();
   if (roll >= 17) {
     displayText('You caught the earlier bus and managed to take a quick nap!');
@@ -301,7 +313,7 @@ var takeBus = function () {
     player.changeMoney(-1.5);
     changeLevel(tacoma);
   } else if (roll >= 5) {
-    displayText('You ride the bus to BLANK.');
+    displayText('You ride the bus to Tacoma.');
     player.changeTime(-30);
     player.changeMoney(-1.5);
     changeLevel(tacoma);
@@ -311,27 +323,104 @@ var takeBus = function () {
     player.changeMoney(-1.5);
     changeLevel(tacoma);
   }
+  changeLevel(tacoma, takeBusTacoma,takeTrainTacoma, rideWithStranger);
 };
 var takeCar = function () {
   var roll = rollD20();
   if (roll >= 17) {
-    displayText('You drive your car to BLANK and make great time!');
+    displayText('You drive your car to Tacoma and make great time!');
     player.changeTime(-10);
+    
     // nextLevel();
+    
   } else if (roll >= 7) {
-    displayText('You ride your bus to BLANK, but there was some traffic.');
+    displayText('You ride your bus to Tacoma, but there was some traffic.');
     player.changeTime(-20);
+    
     // nextLevel();
+    changeLevel(tacoma, takeBusTacoma,takeTrainTacoma, rideWithStranger);
   } else {
     displayText('Your car wouldn\'t start. You had to take the bus to BLANK.');
     player.changeTime(-45);
     player.changeMoney(-1.5);
   }
+  changeLevel(tacoma, takeBusTacoma,takeTrainTacoma, rideWithStranger);
 };
+//*******************************Home functions for intial level END***********************
+
+
+
+
+
+
+// ********************************** Tacoma Logic Start*****************************
+//Bus Option
+var takeBusTacoma = function() {
+  var roll = rollD20();
+  if (roll > 17) {
+    displayText('Bus was running on all cylinders and arrived ahead of schedule in Federal Way');
+    player.changeTime(-10);
+    player.changeMoney(-5);
+  } else if (roll >= 7) {
+    displayText('Bus driver is newer and goes slow figuring out his route');
+    player.changeTime(-20);
+    player.changeMoney(-5);
+  } else {
+    displayText('Bus tire is flat you had to wait for next one, big loss of time and frustraion');
+    player.changeTime(-45);
+    player.changeHealth(-10);
+    player.changeMoney(-10);
+ }
+ changeLevel(federalWay,rideMoped, takeBusFedWay, takeTrainFedWay);
+};
+
+//Train Option
+var takeTrainTacoma = function() {
+ var roll = rollD20();
+ if (roll > 15) {
+   displayText('Train is ahead of schedule and you made it to Federal Way in record time');
+   player.changeTime(-5);
+   player.changeMoney(-15);
+ } else if (roll >= 5) {
+   displayText('The train is very busy but makes decent time');
+   player.changeTime(-10);
+   player.changeMoney(-15);
+ } else {
+   displayText('The train was on the wrong tracks you have to wait for it to switch. You also get over-charged for your ticket');
+   player.changeTime(-45);
+   player.changeHealth(-10);
+   player.changeMoney(-30);
+}
+changeLevel(federalWay,rideMoped, takeBusFedWay, takeTrainFedWay);
+};
+
+//Moped with stranger option 
+var rideWithStranger = function() {
+ var roll = rollD20();
+ if (roll > 17) {
+   displayText('The stranger ended up actually being very reliable, you zoomed to Federal Way without issue, but they charged you 15$');
+   player.changeTime(-5);
+   player.changeMoney(-15);
+ } else if (roll >= 5) {
+   displayText('The stranger was very odd, but you still made it there ontime. The driver charged you 15$');
+   player.changeTime(-10);
+   player.changeMoney(-15);
+ } else {
+   displayText('Big mistake.... Stranger got lost and took all morning to find Federal Way. You still got charged 15$');
+   player.changeTime(-45);
+   player.changeHealth(-50);
+   player.changeMoney(-15);
+}
+changeLevel(federalWay,rideMoped, takeBusFedWay, takeTrainFedWay);
+};
+
+// *************************************End of Tacoma Logic
+
 
 
 // ********************************** FederalWay Logic Start*****************************
 //Bus Option
+<<<<<<< HEAD
 var takeBusFedWay = function () {
   var roll = rollD20();
   if (roll > 17) {
@@ -387,6 +476,66 @@ var rideMoped = function () {
     player.changeMoney(-15);
   }
 };
+=======
+  var takeBusFedWay = function() {
+     var roll = rollD20();
+     if (roll > 17) {
+       displayText('Bus ran through some stoplights and you made it there quick!');
+       player.changeTime(-10);
+       player.changeMoney(-5);
+     } else if (roll >= 7) {
+       displayText('Bus driver is newer and goes slow figuring out his route');
+       player.changeTime(-20);
+       player.changeMoney(-5);
+     } else {
+       displayText('Bus tire is flat you had to wait for next one, big loss of time and frustraion');
+       player.changeTime(-45);
+       player.changeHealth(-10);
+       player.changeMoney(-10);
+    }
+    changeLevel(seaTac,rideMoped, takeBusFedWay, takeTrainFedWay);
+   };
+
+   //Train Option
+   var takeTrainFedWay = function() {
+    var roll = rollD20();
+    if (roll > 15) {
+      displayText('Train is running smoothly this morning, you practically flew to your next stop!');
+      player.changeTime(-5);
+      player.changeMoney(-15);
+    } else if (roll >= 5) {
+      displayText('The train is a little behind, but not much');
+      player.changeTime(-10);
+      player.changeMoney(-15);
+    } else {
+      displayText('The train breaks down, you have to wait for another one to arrive. You also get charged for two train tickets');
+      player.changeTime(-45);
+      player.changeHealth(-10);
+      player.changeMoney(-30);
+   }
+   changeLevel(seaTac,rideMoped, takeBusFedWay, takeTrainFedWay);
+  };
+
+  //Moped with stranger option 
+  var rideMoped = function() {
+    var roll = rollD20();
+    if (roll > 17) {
+      displayText('The risk payed off the moped ended up weaving in and out of traffic to save you time, but they charged you 15$');
+      player.changeTime(-5);
+      player.changeMoney(-15);
+    } else if (roll >= 5) {
+      displayText('The moped ride was weird, but it made it in average time. The driver charged you 15$');
+      player.changeTime(-10);
+      player.changeMoney(-15);
+    } else {
+      displayText('The moped was a horrible idea, it almost immediately crashed into the stoplight. You still got charged 15$');
+      player.changeTime(-45);
+      player.changeHealth(-50);
+      player.changeMoney(-15);
+   }
+   changeLevel(seaTac,rideMoped, takeBusFedWay, takeTrainFedWay);
+  };
+>>>>>>> 7b16b8fb2a3aebff24c8659907a8bac0695f3fa0
 
 // *************************************End of Federal Way Logic
 
@@ -409,6 +558,7 @@ var takeBusSeaTac = function () {
     player.changeHealth(-15);
     player.changeMoney(-0);
   }
+  changeLevel(seattle,takeBusSeaTac,takeTrainSeaTac,CarpoolSeaTac);
 };
 
 //Train Option//
@@ -428,6 +578,7 @@ var takeTrainSeaTac = function () {
     player.changeHealth(-15);
     player.changeMoney(-0);
   }
+  changeLevel(seattle,takeBusSeaTac,takeTrainSeaTac,CarpoolSeaTac);
 };
 
 //Carpool
@@ -447,9 +598,10 @@ var CarpoolSeaTac = function () {
     player.changeHealth(-9);
     player.changeMoney(-0);
   }
+  changeLevel(seattle,takeBusSeaTac,takeTrainSeaTac,CarpoolSeaTac);
 };
 
-changeLevel(seattle,takeBusSeaTac,takeTrainSeaTac,CarpoolSeaTac);
+
 
 
 ////////////////--------------------------------------------------------
@@ -476,6 +628,8 @@ function gameOver(outcome) {
   gameOverMsg.setAttribute('id','game-over');
   gameOverResult.setAttribute('id', 'outcome');
   gameOverResult.textContent = outcome;
+
+
 }
 // ACTION FUNCTION TEMPLATE
 // var functionName = function() {
@@ -498,6 +652,7 @@ function gameOver(outcome) {
 //   }
 // };
 var player = new Player('testPlayer');
+
 changeLevel(home, takeBus, takeCar, snooze);
 var playerInfo = document.createElement('span');
 playerInfo.textContent = player.name;
@@ -522,3 +677,4 @@ function drawHealthBar(canvas, x, y, width, height, health, max) {
 var healthBar = document.getElementById('healthbar').getContext('2d');
 drawHealthBar(healthBar, 10, 10, 200, 30, player.health, 100);
 changeLevel(home, takeBus, takeCar, snooze);
+
