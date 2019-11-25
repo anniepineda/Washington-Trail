@@ -104,8 +104,14 @@ h1 {
   outline: 2px solid red;
   z-index: 1000;
 }
+#no-display-1 {
+  display: none;
+}
+#no-display-2 {
+  display: none;
+}
 #game-over {
-  position: absolute;
+  position: fixed;
   margin: 0 auto;
   z-index: 5;
   font-family: 'Press Start 2P', cursive;
@@ -115,7 +121,7 @@ h1 {
   padding: 500px;
 }
 #outcome {
-  position: absolute;
+  position: fixed;
   margin-top: 200px;
   z-index: 5;
   font-family: 'Press Start 2P', cursive;

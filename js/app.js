@@ -7,6 +7,8 @@ var startingHealth;
 var leftFunction;
 var centerFunction;
 var rightFunction;
+var won = 'You won!';
+var lost = 'You lost!';
 var heading = document.getElementById('heading');
 var leftImg = document.getElementById('leftImg');
 var centerImg = document.getElementById('centerImg');
@@ -14,7 +16,8 @@ var rightImg = document.getElementById('rightImg');
 var textBox = document.getElementById('textbox');
 var mapImage = document.getElementById('mapImage');
 var choicePanel = document.getElementById('panel');
-var gameOverContainer = document.getElementById('game-over-container');
+var gameOverMsg = document.getElementById('no-display-1');
+var gameOverResult = document.getElementById('no-display-2');
 choicePanel.addEventListener('click', clickHandler);
 // ARRAYS THAT HOLD THE LOCATION INFORMATION TO BE FED INTO LEVELCHANGE FUNCTION.
 var home = [
@@ -221,7 +224,7 @@ function eatMushroom() {
   displayText('Hmmm... This mushroom tastes kinda funny.');
   if (roll == 20) {
     displayText(
-      'You have ascended to another realm of consciousness. Where were you going anyways? It doesn't matter.'
+      'You have ascended to another realm of consciousness. Where were you going anyways? It doesn\'t matter.'
     );
     // endGame('win');
   } else if (roll >= 10) {
@@ -267,7 +270,7 @@ var takeCar = function() {
     player.changeTime(-20);
     // nextLevel();
   } else {
-    displayText('Your car wouldn't start. You had to take the bus to BLANK.');
+    displayText('Your car wouldn\'t start. You had to take the bus to BLANK.');
     player.changeTime(-45);
     player.changeMoney(-1.5);
   }
@@ -289,8 +292,11 @@ function displayText(text) {
   alert.textContent = text;
   textBox.appendChild(alert);
 }
+// ENDS GAME AND DISPLAYS RESULT
 function gameOver(outcome) {
-  
+  gameOverMsg.setAttribute('id','game-over');
+  gameOverResult.setAttribute('id', 'outcome');
+  gameOverResult.textContent = outcome;
 }
 // ACTION FUNCTION TEMPLATE
 // var functionName = function() {
