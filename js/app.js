@@ -282,6 +282,71 @@ var takeCar = function() {
     player.changeMoney(-1.5);
   }
 };
+
+
+// ********************************** FederalWay Logic Start*****************************
+//Bus Option
+  var takeBusFedWay = function() {
+     var roll = rollD20();
+     if (roll > 17) {
+       displayText('Bus ran through some stoplights and you made it there quick!');
+       player.changeTime(-10);
+       player.changeMoney(-5);
+     } else if (roll >= 7) {
+       displayText('Bus driver is newer and goes slow figuring out his route');
+       player.changeTime(-20);
+       player.changeMoney(-5);
+     } else {
+       displayText('Bus tire is flat you had to wait for next one, big loss of time and frustraion');
+       player.changeTime(-45);
+       player.changeHealth(-10);
+       player.changeMoney(-10);
+    }
+   };
+
+   //Train Option
+   var takeTrainFedWay = function() {
+    var roll = rollD20();
+    if (roll > 15) {
+      displayText('Train is running smoothly this morning, you practically flew to your next stop!');
+      player.changeTime(-5);
+      player.changeMoney(-15);
+    } else if (roll >= 5) {
+      displayText('The train is a little behind, but not much');
+      player.changeTime(-10);
+      player.changeMoney(-15);
+    } else {
+      displayText('The train breaks down, you have to wait for another one to arrive. You also get charged for two train tickets');
+      player.changeTime(-45);
+      player.changeHealth(-10);
+      player.changeMoney(-30);
+   }
+  };
+
+  //Moped with stranger option 
+  var rideMoped = function() {
+    var roll = rollD20();
+    if (roll > 17) {
+      displayText('The risk payed off the moped ended up weaving in and out of traffic to save you time, but they charged you 15$');
+      player.changeTime(-5);
+      player.changeMoney(-15);
+    } else if (roll >= 5) {
+      displayText('The moped ride was weird, but it made it in average time. The driver charged you 15$');
+      player.changeTime(-10);
+      player.changeMoney(-15);
+    } else {
+      displayText('The moped was a horrible idea, it almost immediately crashed into the stoplight. You still got charged 15$');
+      player.changeTime(-45);
+      player.changeHealth(-50);
+      player.changeMoney(-15);
+   }
+  };
+
+// *************************************End of Federal Way Logic
+
+
+
+
 function changeLevel(city, funcOne, funcTwo, funcThree) {
   heading.textContent = city[0];
   leftImg.setAttribute("src", city[1]);
