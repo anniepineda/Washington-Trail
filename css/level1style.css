@@ -97,3 +97,28 @@ padding: 10px;
 h1 {
   font-size: 50px;
 }
+#game-over-container {
+  margin: 0 auto;
+  height: 50px;
+  widows: 50px;
+  outline: 2px solid red;
+  z-index: 1000;
+}
+#game-over {
+  position: absolute;
+  margin: 0 auto;
+  z-index: 5;
+  font-family: 'Press Start 2P', cursive;
+  font-size: 100px;
+  color: rgb(38, 247, 10);
+  background-color: black;
+  padding: 500px;
+}
+#outcome {
+  position: absolute;
+  margin-top: 200px;
+  z-index: 5;
+  font-family: 'Press Start 2P', cursive;
+  font-size: 50px;
+  color: rgb(38, 247, 10);
+}
