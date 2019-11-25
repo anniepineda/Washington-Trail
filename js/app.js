@@ -22,6 +22,7 @@ choicePanel.addEventListener('click', clickHandler);
 // ARRAYS THAT HOLD THE LOCATION INFORMATION TO BE FED INTO LEVELCHANGE FUNCTION.
 var home = [
   'Home',
+
   'assets/Level Images/Snooze.jpeg',
   'assets/Level Images/Bus.jpg',
   'assets/Level Images/Car.jpg',
@@ -41,19 +42,20 @@ var federalWay = [
   'assets/Level Images/Train.jpg',
   'location2.png'
 ];
+
 var seaTac = [
   'SeaTac',
   'https://via.placeholder.com/150',
   'https://via.placeholder.com/150',
   'https://via.placeholder.com/150',
-  'location3.png'
+  'assets/Maps/location3.png'
 ];
 var seattle = [
   'Seattle',
   'https://via.placeholder.com/150',
   'https://via.placeholder.com/150',
   'https://via.placeholder.com/150',
-  'End.png'
+  'assets/Maps/End.png'
 ];
 
 // CLICK HANDLER
@@ -89,7 +91,7 @@ function getName() {
 // Get user name from local storage and set player name
 var localStorageUserName = localStorage.getItem('userName');
 
-//var player = JSON.parse(localStorageUserName); COMMENTED OUT FOR TESTIJNG
+var player = new Player(JSON.parse(localStorageUserName));
 
 
 // Player constructor function
@@ -338,6 +340,7 @@ function displayText(text) {
   alert.textContent = text;
   textBox.appendChild(alert);
 }
+
 // ENDS GAME AND DISPLAYS RESULT
 function gameOver(outcome) {
   gameOverMsg.setAttribute('id','game-over');
@@ -368,4 +371,28 @@ function gameOver(outcome) {
 // };
 var player = new Player('testPlayer');
 
-changeLevel(home, snooze,takeBus, takeCar);
+changeLevel(home, takeBus, takeCar, snooze);
+var playerInfo = document.createElement('span');
+playerInfo.textContent = player.name;
+document.getElementById('player-data').appendChild(playerInfo);
+// Player healthbar
+function drawHealthBar(canvas, x, y, width, height, health, max) {
+
+  canvas.fillStyle = '#000000';
+  canvas.fillRect(x,y,width,height);
+
+  var colorNumber = Math.round((1-(health/max)) * 0xff) * 0x10000 + Math.round((health/max) * 0xff) * 0x100;
+  var colorString = colorNumber.toString(16);
+  if (colorNumber >= 0x100000) {
+    canvas.fillStyle = '#' + colorString;
+  } else if (colorNumber << 0x100000 && colorNumber >= 0x10000) {
+    canvas.fillStyle = '#0'+colorString;
+  } else if (colorNumber << 0x10000) {
+    canvas.fillStyle = '#00'+colorString;
+  }
+  canvas.fillRect(x+1,y+1,(health/max)*(width-2),height-2);
+}
+var healthBar = document.getElementById('healthbar').getContext('2d');
+drawHealthBar(healthBar, 10, 10, 200, 30, player.health, 100);
+changeLevel(home, takeBus, takeCar, snooze);
+
