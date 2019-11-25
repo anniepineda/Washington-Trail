@@ -7,12 +7,15 @@ function clickHandler(event) {
   switch (event.target.id) {
   case 'leftImg':
     console.log("you clicked on left");
+    leftFunction();
     break;
   case 'centerImg':
     console.log("you clicked on center");
+    centerFunction();
     break;
   case 'rightImg':
     console.log('you clicked on right');
+    rightFunction();
     break;
   default:
     console.log('blam', event.target.id);
@@ -33,7 +36,8 @@ function getName() {
 }
 // Get user name from local storage and set player name
 var localStorageUserName = localStorage.getItem("userName");
-var player = JSON.parse(localStorageUserName);
+
+//var player = JSON.parse(localStorageUserName); COMMENTED OUT FOR TESTIJNG
 
 // Starting player attributes should be determined by level, default levels set in player constructor function.
 var startingMoney;
@@ -47,36 +51,42 @@ var leftFunction;
 var centerFunction;
 var rightFunction;
 var textBox = document.getElementById("textbox");
+var mapImage = document.getElementById('mapImage');
 // ARRAYS THAT HOLD THE LOCATION INFORMATION TO BE FED INTO LEVELCHANGE FUNCTION.
 var home = [
   "Home",
   "https://via.placeholder.com/150",
   "https://via.placeholder.com/150",
-  "https://via.placeholder.com/150"
+  "https://via.placeholder.com/150",
+  "Start.png"
 ];
 var tacoma = [
   "Tacoma",
   "https://via.placeholder.com/150",
   "https://via.placeholder.com/150",
-  "https://via.placeholder.com/150"
+  "https://via.placeholder.com/150",
+  "location1.png"
 ];
 var federalWay = [
   "Federal Way",
   "https://via.placeholder.com/150",
   "https://via.placeholder.com/150",
-  "https://via.placeholder.com/150"
+  "https://via.placeholder.com/150",
+  "location2.png"
 ];
 var seaTac = [
   "SeaTac",
   "https://via.placeholder.com/150",
   "https://via.placeholder.com/150",
-  "https://via.placeholder.com/150"
+  "https://via.placeholder.com/150",
+  "location3.png"
 ];
 var seattle = [
   "Seattle",
   "https://via.placeholder.com/150",
   "https://via.placeholder.com/150",
-  "https://via.placeholder.com/150"
+  "https://via.placeholder.com/150",
+  "End.png"
 ];
 
 // Player constructor function
@@ -242,16 +252,17 @@ var takeBus = function() {
     player.changeTime(-15);
     player.changeHealth(5);
     player.changeMoney(-1.5);
-    // nextLevel();
+    changeLevel(tacoma)
   } else if (roll >= 5) {
     displayText("You ride the bus to BLANK.");
     player.changeTime(-30);
     player.changeMoney(-1.5);
-    // nextLevel();
+    changeLevel(tacoma)
   } else {
     displayText("You missed the bus and had to wait for the next one.");
     player.changeTime(-45);
     player.changeMoney(-1.5);
+    changeLevel(tacoma);
   }
 };
 var takeCar = function() {
@@ -275,6 +286,7 @@ function changeLevel(city, funcOne, funcTwo, funcThree) {
   leftImg.setAttribute("src", city[1]);
   centerImg.setAttribute("src", city[2]);
   rightImg.setAttribute("src", city[3]);
+  mapImage.setAttribute("src", city[4]);
   leftFunction = funcOne;
   centerFunction = funcTwo;
   rightFunction = funcThree;
@@ -286,5 +298,3 @@ function displayText(text) {
   alert.textContent = text;
   textBox.appendChild(alert);
 }
-
-changeLevel(tacoma, takeBus, takeCar, snooze);
