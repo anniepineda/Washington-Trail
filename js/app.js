@@ -77,7 +77,6 @@ function clickHandler(event) {
   }
 }
 
-
 // USERNAME LOGIC
 // function gets name from index.html text field for user name
 function getName() {
@@ -90,7 +89,6 @@ function getName() {
 var localStorageUserName = localStorage.getItem('userName');
 
 var player = new Player(JSON.parse(localStorageUserName));
-
 
 // Player constructor function
 function Player(
@@ -107,12 +105,21 @@ function Player(
 // Player methods
 Player.prototype.changeMoney = function(delta) {
   this.money += delta;
+  if(player.money <= 0) {
+    gameOver('You ran out of money.');
+  }
 };
 Player.prototype.changeTime = function(delta) {
   this.time += delta;
+  if(player.time <= 0) {
+    gameOver('You ran out of time.');
+  }
 };
 Player.prototype.changeHealth = function(delta) {
   this.health += delta;
+  if(player.health <= 0) {
+    gameOver('You have died');
+  }
 };
 // function to roll 20 sided dice
 function rollD20() {
@@ -264,7 +271,6 @@ var takeCar = function() {
   if (roll >= 17) {
     displayText('You drive your car to BLANK and make great time!');
     player.changeTime(-10);
-    // nextLevel();
   } else if (roll >= 7) {
     displayText('You ride your bus to BLANK, but there was some traffic.');
     player.changeTime(-20);
@@ -276,80 +282,91 @@ var takeCar = function() {
   }
 };
 
-
 // ********************************** FederalWay Logic Start*****************************
 //Bus Option
-  var takeBusFedWay = function() {
-     var roll = rollD20();
-     if (roll > 17) {
-       displayText('Bus ran through some stoplights and you made it there quick!');
-       player.changeTime(-10);
-       player.changeMoney(-5);
-     } else if (roll >= 7) {
-       displayText('Bus driver is newer and goes slow figuring out his route');
-       player.changeTime(-20);
-       player.changeMoney(-5);
-     } else {
-       displayText('Bus tire is flat you had to wait for next one, big loss of time and frustraion');
-       player.changeTime(-45);
-       player.changeHealth(-10);
-       player.changeMoney(-10);
-    }
-   };
+var takeBusFedWay = function() {
+  var roll = rollD20();
+  if (roll > 17) {
+    displayText('Bus ran through some stoplights and you made it there quick!');
+    player.changeTime(-10);
+    player.changeMoney(-5);
+  } else if (roll >= 7) {
+    displayText('Bus driver is newer and goes slow figuring out his route');
+    player.changeTime(-20);
+    player.changeMoney(-5);
+  } else {
+    displayText(
+      'Bus tire is flat you had to wait for next one, big loss of time and frustraion'
+    );
+    player.changeTime(-45);
+    player.changeHealth(-10);
+    player.changeMoney(-10);
+  }
+};
 
-   //Train Option
-   var takeTrainFedWay = function() {
-    var roll = rollD20();
-    if (roll > 15) {
-      displayText('Train is running smoothly this morning, you practically flew to your next stop!');
-      player.changeTime(-5);
-      player.changeMoney(-15);
-    } else if (roll >= 5) {
-      displayText('The train is a little behind, but not much');
-      player.changeTime(-10);
-      player.changeMoney(-15);
-    } else {
-      displayText('The train breaks down, you have to wait for another one to arrive. You also get charged for two train tickets');
-      player.changeTime(-45);
-      player.changeHealth(-10);
-      player.changeMoney(-30);
-   }
-  };
+//Train Option
+var takeTrainFedWay = function() {
+  var roll = rollD20();
+  if (roll > 15) {
+    displayText(
+      'Train is running smoothly this morning, you practically flew to your next stop!'
+    );
+    player.changeTime(-5);
+    player.changeMoney(-15);
+  } else if (roll >= 5) {
+    displayText('The train is a little behind, but not much');
+    player.changeTime(-10);
+    player.changeMoney(-15);
+  } else {
+    displayText(
+      'The train breaks down, you have to wait for another one to arrive. You also get charged for two train tickets'
+    );
+    player.changeTime(-45);
+    player.changeHealth(-10);
+    player.changeMoney(-30);
+  }
+};
 
-  //Moped with stranger option 
-  var rideMoped = function() {
-    var roll = rollD20();
-    if (roll > 17) {
-      displayText('The risk payed off the moped ended up weaving in and out of traffic to save you time, but they charged you 15$');
-      player.changeTime(-5);
-      player.changeMoney(-15);
-    } else if (roll >= 5) {
-      displayText('The moped ride was weird, but it made it in average time. The driver charged you 15$');
-      player.changeTime(-10);
-      player.changeMoney(-15);
-    } else {
-      displayText('The moped was a horrible idea, it almost immediately crashed into the stoplight. You still got charged 15$');
-      player.changeTime(-45);
-      player.changeHealth(-50);
-      player.changeMoney(-15);
-   }
-  };
+//Moped with stranger option
+var rideMoped = function() {
+  var roll = rollD20();
+  if (roll > 17) {
+    displayText(
+      'The risk payed off the moped ended up weaving in and out of traffic to save you time, but they charged you 15$'
+    );
+    player.changeTime(-5);
+    player.changeMoney(-15);
+  } else if (roll >= 5) {
+    displayText(
+      'The moped ride was weird, but it made it in average time. The driver charged you 15$'
+    );
+    player.changeTime(-10);
+    player.changeMoney(-15);
+  } else {
+    displayText(
+      'The moped was a horrible idea, it almost immediately crashed into the stoplight. You still got charged 15$'
+    );
+    player.changeTime(-45);
+    player.changeHealth(-50);
+    player.changeMoney(-15);
+  }
+};
 
 // *************************************End of Federal Way Logic
 
-
-
-
 function changeLevel(city, funcOne, funcTwo, funcThree) {
-  heading.textContent = city[0];
-  leftImg.setAttribute('src', city[1]);
-  centerImg.setAttribute('src', city[2]);
-  rightImg.setAttribute('src', city[3]);
-  mapImage.setAttribute('src', city[4]);
-  leftFunction = funcOne;
-  centerFunction = funcTwo;
-  rightFunction = funcThree;
-  console.log('level changed to ' + city);
+  if(player.health <= 0) {
+    gameOver(lost);
+  } else {
+    heading.textContent = city[0];
+    leftImg.setAttribute('src', city[1]);
+    centerImg.setAttribute('src', city[2]);
+    rightImg.setAttribute('src', city[3]);
+    mapImage.setAttribute('src', city[4]);
+    leftFunction = funcOne;
+    centerFunction = funcTwo;
+    rightFunction = funcThree;
+  }
 }
 // RENDERS TEXT TO TEXTBOX
 function displayText(text) {
@@ -359,7 +376,7 @@ function displayText(text) {
 }
 // ENDS GAME AND DISPLAYS RESULT
 function gameOver(outcome) {
-  gameOverMsg.setAttribute('id','game-over');
+  gameOverMsg.setAttribute('id', 'game-over');
   gameOverResult.setAttribute('id', 'outcome');
   gameOverResult.textContent = outcome;
 }
