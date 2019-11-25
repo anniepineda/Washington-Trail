@@ -69,9 +69,9 @@ var tacoma = [
 ];
 var federalWay = [
   "Federal Way",
-  "https://via.placeholder.com/150",
-  "https://via.placeholder.com/150",
-  "https://via.placeholder.com/150",
+  "assets/Level Images/Moped.jpg",
+  "assets/Level Images/Bus.jpg",
+  "assets/Level Images/Train.jpg",
   "location2.png"
 ];
 var seaTac = [
@@ -363,3 +363,5 @@ function displayText(text) {
   alert.textContent = text;
   textBox.appendChild(alert);
 }
+
+changeLevel(federalWay,rideMoped,takeBusFedWay,takeTrainFedWay);
