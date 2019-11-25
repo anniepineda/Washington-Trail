@@ -183,3 +183,9 @@ hr {
   font-size: 50px;
   color: #33FF33;
 }
+
+alert {
+  padding: 20px;
+  background-color: #f44336;
+  color: white;
+}

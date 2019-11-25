@@ -121,3 +121,9 @@ input[type="text"] {
   text-shadow: 2px 2px #FF0000;
   color: yellow;
 }
+
+.alert {
+  padding: 20px;
+  background-color: #f44336;
+  color: white;
+}
