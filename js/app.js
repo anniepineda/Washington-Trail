@@ -403,6 +403,7 @@ var CarpoolSeaTac = function () {
   }
 };
 
+changeLevel(seattle,takeBusSeaTac,takeTrainSeaTac,CarpoolSeaTac);
 
 
 ////////////////--------------------------------------------------------
