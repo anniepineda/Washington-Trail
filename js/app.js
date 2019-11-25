@@ -388,3 +388,25 @@ function gameOver(outcome) {
 // };
 var player = new Player('testPlayer');
 changeLevel(home, takeBus, takeCar, snooze);
+var playerInfo = document.createElement('span');
+playerInfo.textContent = player.name;
+document.getElementById('player-data').appendChild(playerInfo);
+// Player healthbar
+function drawHealthBar(canvas, x, y, width, height, health, max) {
+
+  canvas.fillStyle = '#000000';
+  canvas.fillRect(x,y,width,height);
+
+  var colorNumber = Math.round((1-(health/max)) * 0xff) * 0x10000 + Math.round((health/max) * 0xff) * 0x100;
+  var colorString = colorNumber.toString(16);
+  if (colorNumber >= 0x100000) {
+    canvas.fillStyle = '#' + colorString;
+  } else if (colorNumber << 0x100000 && colorNumber >= 0x10000) {
+    canvas.fillStyle = '#0'+colorString;
+  } else if (colorNumber << 0x10000) {
+    canvas.fillStyle = '#00'+colorString;
+  }
+  canvas.fillRect(x+1,y+1,(health/max)*(width-2),height-2);
+}
+var healthBar = document.getElementById('healthbar').getContext('2d');
+drawHealthBar(healthBar, 10, 10, 200, 30, player.health, 100);
