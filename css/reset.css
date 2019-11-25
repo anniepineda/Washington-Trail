@@ -46,3 +46,10 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
+
+.alert {
+	padding: 20px;
+	background-color: #f44336;
+	color: white;
+  }
+  

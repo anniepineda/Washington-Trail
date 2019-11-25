@@ -183,5 +183,15 @@ hr {
   font-family: 'Press Start 2P', cursive;
   font-size: 50px;
   color: #33FF33;
+
   background-color: black;
 }
+
+}
+
+alert {
+  padding: 20px;
+  background-color: #f44336;
+  color: white;
+}
+

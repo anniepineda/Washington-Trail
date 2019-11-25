@@ -65,9 +65,9 @@ choicePanel.addEventListener('click', clickHandler);
 var home = [
   'Home',
 
-  'assets/Level Images/Snooze.jpeg',
   'assets/Level Images/Bus.jpg',
   'assets/Level Images/Car.jpg',
+  'assets/Level Images/Snooze.jpeg',
   'assets/Maps/Start.png'
 ];
 var tacoma = [
@@ -75,7 +75,7 @@ var tacoma = [
   'assets/Level Images/Bus.jpg',
   'assets/Level Images/Train.jpg',
   'assets/Level Images/Stranger.jpg',
-  'location1.pngassets/Maps/location1.png'
+  'assets/Maps/location1.png'
 ];
 var federalWay = [
   'Federal Way',
@@ -185,7 +185,7 @@ var snooze = function() {
   } else if (roll >= 2) {
     player.changeHealth(15);
     player.changeTime(-15);
-    displayText('You got some extra sleep! Feeling good. Pick again!');
+    displayText('You got some extra sleep! Feeling good plus 15 health. Pick again!');
   } else {
     player.health = 0;
     displayText(
@@ -300,28 +300,29 @@ var takeBus = function () {
 
   var roll = rollD20();
   if (roll >= 17) {
-    displayText('You caught the earlier bus and managed to take a quick nap!');
+    displayText('You caught the earlier bus and managed to take a quick nap! It took 15 minutes, you gained 5 health');
     player.changeTime(-15);
     player.changeHealth(5);
-    player.changeMoney(-1.5);
+    player.changeMoney(-5);
     changeLevel(tacoma);
   } else if (roll >= 5) {
-    displayText('You ride the bus to Tacoma.');
+    displayText('You ride the bus to Tacoma. It takes 30 minutes and costs 5$');
     player.changeTime(-30);
-    player.changeMoney(-1.5);
+    player.changeMoney(-5);
     changeLevel(tacoma);
   } else {
-    displayText('You missed the bus and had to wait for the next one.');
+    displayText('You missed the bus and had to wait for the next one. It took 45 Minutes and cost 5$');
     player.changeTime(-45);
-    player.changeMoney(-1.5);
+    player.changeMoney(-5);
     changeLevel(tacoma);
   }
+ 
   changeLevel(tacoma, takeBusTacoma,takeTrainTacoma, rideWithStranger);
 };
 var takeCar = function () {
   var roll = rollD20();
   if (roll >= 17) {
-    displayText('You drive your car to Tacoma and make great time!');
+    displayText('You drive your car to Tacoma and make great time! It took onlly 10 minutes');
     player.changeTime(-10);
 
     
@@ -329,15 +330,15 @@ var takeCar = function () {
     
 
   } else if (roll >= 7) {
-    displayText('You ride your bus to Tacoma, but there was some traffic.');
+    displayText('You ride your car to Tacoma, but there was some traffic. Minus 20 minutes');
     player.changeTime(-20);
     
     // nextLevel();
     changeLevel(tacoma, takeBusTacoma,takeTrainTacoma, rideWithStranger);
   } else {
-    displayText('Your car wouldn\'t start. You had to take the bus to BLANK.');
+    displayText('Your car wouldn\'t start. You had to take the bus to Tacoma. Minus 45 minutes and 5$');
     player.changeTime(-45);
-    player.changeMoney(-1.5);
+    player.changeMoney(5);
   }
   changeLevel(tacoma, takeBusTacoma,takeTrainTacoma, rideWithStranger);
 };
@@ -353,15 +354,15 @@ var takeCar = function () {
 var takeBusTacoma = function() {
   var roll = rollD20();
   if (roll > 17) {
-    displayText('Bus was running on all cylinders and arrived ahead of schedule in Federal Way');
+    displayText('Bus was running on all cylinders and arrived ahead of schedule in Federal Way. Minus 10 minutes, minus 5$');
     player.changeTime(-10);
     player.changeMoney(-5);
   } else if (roll >= 7) {
-    displayText('Bus driver is newer and goes slow figuring out his route');
+    displayText('Bus driver is newer and goes slow figuring out his route. Minus 20 minutes, minus 5$');
     player.changeTime(-20);
     player.changeMoney(-5);
   } else {
-    displayText('Bus tire is flat you had to wait for next one, big loss of time and frustraion');
+    displayText('Bus tire is flat you had to wait for next one, big loss of time and frustraion. Minus 45 minutes, minus 10 health, minus 10$');
     player.changeTime(-45);
     player.changeHealth(-10);
     player.changeMoney(-10);
@@ -373,15 +374,15 @@ var takeBusTacoma = function() {
 var takeTrainTacoma = function() {
  var roll = rollD20();
  if (roll > 15) {
-   displayText('Train is ahead of schedule and you made it to Federal Way in record time');
+   displayText('Train is ahead of schedule and you made it to Federal Way in record time. Minus 5 minutes, Minus 15$');
    player.changeTime(-5);
    player.changeMoney(-15);
  } else if (roll >= 5) {
-   displayText('The train is very busy but makes decent time');
+   displayText('The train is very busy but makes decent time, minus 10 minutes, 15$');
    player.changeTime(-10);
    player.changeMoney(-15);
  } else {
-   displayText('The train was on the wrong tracks you have to wait for it to switch. You also get over-charged for your ticket');
+   displayText('The train was on the wrong tracks you have to wait for it to switch. You also get over-charged for your ticket. -45 minutes, -10 health, -30$');
    player.changeTime(-45);
    player.changeHealth(-10);
    player.changeMoney(-30);
@@ -393,15 +394,15 @@ changeLevel(federalWay,rideMoped, takeBusFedWay, takeTrainFedWay);
 var rideWithStranger = function() {
  var roll = rollD20();
  if (roll > 17) {
-   displayText('The stranger ended up actually being very reliable, you zoomed to Federal Way without issue, but they charged you 15$');
+   displayText('The stranger ended up actually being very reliable, you zoomed to Federal Way without issue, but they charged you 15$. -5 minutes');
    player.changeTime(-5);
    player.changeMoney(-15);
  } else if (roll >= 5) {
-   displayText('The stranger was very odd, but you still made it there ontime. The driver charged you 15$');
+   displayText('The stranger was very odd, but you still made it there ontime. The driver charged you 15$. -10 Minutes');
    player.changeTime(-10);
    player.changeMoney(-15);
  } else {
-   displayText('Big mistake.... Stranger got lost and took all morning to find Federal Way. You still got charged 15$');
+   displayText('Big mistake.... Stranger got lost and took all morning to find Federal Way. You still got charged 15$. -45 minutes, -50 health');
    player.changeTime(-45);
    player.changeHealth(-50);
    player.changeMoney(-15);
@@ -474,15 +475,15 @@ var rideMoped = function () {
   var takeBusFedWay = function() {
      var roll = rollD20();
      if (roll > 17) {
-       displayText('Bus ran through some stoplights and you made it there quick!');
+       displayText('Bus ran through some stoplights and you made it there quick! -10 minutes, -5$');
        player.changeTime(-10);
        player.changeMoney(-5);
      } else if (roll >= 7) {
-       displayText('Bus driver is newer and goes slow figuring out his route');
+       displayText('Bus driver is newer and goes slow figuring out his route. -20 minutes, 5$');
        player.changeTime(-20);
        player.changeMoney(-5);
      } else {
-       displayText('Bus tire is flat you had to wait for next one, big loss of time and frustraion');
+       displayText('Bus tire is flat you had to wait for next one, big loss of time and frustraion. -45 minutes, -10 health, -10$');
        player.changeTime(-45);
        player.changeHealth(-10);
        player.changeMoney(-10);
@@ -494,15 +495,15 @@ var rideMoped = function () {
    var takeTrainFedWay = function() {
     var roll = rollD20();
     if (roll > 15) {
-      displayText('Train is running smoothly this morning, you practically flew to your next stop!');
+      displayText('Train is running smoothly this morning, you practically flew to your next stop! -5 minutes, -15$');
       player.changeTime(-5);
       player.changeMoney(-15);
     } else if (roll >= 5) {
-      displayText('The train is a little behind, but not much');
+      displayText('The train is a little behind, but not much.  -0 minutes, -15$');
       player.changeTime(-10);
       player.changeMoney(-15);
     } else {
-      displayText('The train breaks down, you have to wait for another one to arrive. You also get charged for two train tickets');
+      displayText('The train breaks down, you have to wait for another one to arrive. You also get charged for two train tickets.  -45 minutes, -30$, -10 health');
       player.changeTime(-45);
       player.changeHealth(-10);
       player.changeMoney(-30);
@@ -514,15 +515,15 @@ var rideMoped = function () {
   var rideMoped = function() {
     var roll = rollD20();
     if (roll > 17) {
-      displayText('The risk payed off the moped ended up weaving in and out of traffic to save you time, but they charged you 15$');
+      displayText('The risk payed off the moped ended up weaving in and out of traffic to save you time, but they charged you 15$. -5 minutes');
       player.changeTime(-5);
       player.changeMoney(-15);
     } else if (roll >= 5) {
-      displayText('The moped ride was weird, but it made it in average time. The driver charged you 15$');
+      displayText('The moped ride was weird, but it made it in average time. The driver charged you 15$. -10 mintues');
       player.changeTime(-10);
       player.changeMoney(-15);
     } else {
-      displayText('The moped was a horrible idea, it almost immediately crashed into the stoplight. You still got charged 15$');
+      displayText('The moped was a horrible idea, it almost immediately crashed into the stoplight. You still got charged 15$. -45 minutes, -50 health');
       player.changeTime(-45);
       player.changeHealth(-50);
       player.changeMoney(-15);
