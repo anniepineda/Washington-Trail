@@ -26,21 +26,21 @@ var home = [
   'assets/Level Images/Snooze.jpeg',
   'assets/Level Images/Bus.jpg',
   'assets/Level Images/Car.jpg',
-  'Start.png'
+  'assets/Maps/Start.png'
 ];
 var tacoma = [
   'Tacoma',
   'assets/Level Images/Bus.jpg',
   'assets/Level Images/Train.jpg',
   'assets/Level Images/Stranger.jpg',
-  'location1.png'
+  'location1.pngassets/Maps/location1.png'
 ];
 var federalWay = [
   'Federal Way',
   'assets/Level Images/Moped.jpg',
   'assets/Level Images/Bus.jpg',
   'assets/Level Images/Train.jpg',
-  'location2.png'
+  'assets/Maps/location2.png'
 ];
 
 var seaTac = [
