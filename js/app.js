@@ -52,7 +52,8 @@ var centerFunction;
 var rightFunction;
 var textBox = document.getElementById("textbox");
 var mapImage = document.getElementById('mapImage');
-// ARRAYS THAT HOLD THE LOCATION INFORMATION TO BE FED INTO LEVELCHANGE FUNCTION.
+
+/////// ARRAYS THAT HOLD THE LOCATION INFORMATION TO BE FED INTO LEVELCHANGE FUNCTION.///////
 var home = [
   "Home",
   "https://via.placeholder.com/150",
@@ -89,7 +90,7 @@ var seattle = [
   "End.png"
 ];
 
-// Player constructor function
+/////// Player constructor function////////
 function Player(
   playerName = "Player 1",
   startingMoney = 5.0,
@@ -115,7 +116,7 @@ function rollD20() {
   var roll = Math.floor(Math.random() * 20 + 1);
   return roll;
 }
-// LIBRARY OF ACTIONS
+//////// LIBRARY OF ACTIONS//////////
 var snooze = function() {
   var roll = rollD20();
   if (roll >= 18) {
