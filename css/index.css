@@ -1,19 +1,25 @@
 * {
   box-sizing: border-box;
   }
+
 body {
   background-color: black;
-  }
-main {
-  text-align: center;
 }
-main img {
+
+header {
+  text-align: center;
+  margin: 0 auto;
+  width: 2000px;
+}
+
+header img {
   width: 186px;
   height: 115px;
-  margin-left: 180px;
-  margin-right: 180px;
+  margin-left: 80px;
+  margin-right: 80px;
 }
-main span {
+
+header span {
   position: relative;
   bottom: 25px;
   font-family: 'Press Start 2P', cursive;
@@ -21,6 +27,11 @@ main span {
   color: #FFB000;
   text-shadow: 2px 2px #FF0000;
 }
+
+main {
+  text-align: center;
+}
+
 hr {
   border: 1px dashed #33FF33;
   margin: 10px 0 10px 0;
@@ -29,18 +40,19 @@ hr {
 
 #tvBox {
   margin: 0 auto;
-  height: 900px;
-  width: 1600px;
+  height: 1200px;
+  width: 2000px;
   background-color: #654321;
   border: 10px solid rgb(49, 16, 16);
   border-radius: 5%;
   z-index: -1;
 }
+
 #grayScreen {
   margin: 0 auto;
   margin-top: 10px;
-  height: 800px;
-  width: 1400px;
+  height: 1100px;
+  width: 1900px;
   background-color: #3C393C;;
   border: 5px solid black;
   border-radius: 20%;
@@ -50,32 +62,38 @@ hr {
 }
 
 #screenContent {
-  margin-top: 40px;
+  margin-top: 50px;
 }
 
 #screenContent h3 {
-  font-size: 20px;
+  font-size: 26px;
 }
+
 #screenContent hr {
   margin: 10px 15% 10px 15%;
 }
+
 #screenContent p.headerInOrange {
   color: #FFB000;
-  font-size: 20px;
+  font-size: 26px;
   margin-top: 30px;
 }
+
 #screenContent p.gameContextInGreen {
-  margin: 50px 10% 60px 10%;
+  margin: 75px 5% 75px 5%;
   transform: scale(1, 2.5);
   text-align: justify;
-  font-size: 12px;
+  font-size: 16px;
 }
+
 #screenContent ul li {
   display: inline;
   text-align: justify;
+  font-size: 16px;
   margin-left: 20px;
   margin-right: 20px;
 }
+
 input[type=submit] {
   background-color: #33FF33;
   color: #3C393C;
@@ -85,6 +103,7 @@ input[type=submit] {
   text-decoration: none;
   cursor: pointer;
 }
+
 input[type="text"] {
   width: 300px;
   border: none;
@@ -93,15 +112,6 @@ input[type="text"] {
   font-size: 20px;
   color: #3C393C;
   background-color: #33FF33;
-}
-#tvButton {
-  float: right;
-  margin-top: 60px;
-  height: 80px;
-  width: 80px;
-  background-color: grey;
-  border: 5px solid black;
-  border-radius: 50%;
 }
 #tvFooterCompanyInfo {
   margin-top: 40px;
