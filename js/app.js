@@ -345,8 +345,6 @@ var takeCar = function() {
 // *************************************End of Federal Way Logic
 
 
-
-
 function changeLevel(city, funcOne, funcTwo, funcThree) {
   heading.textContent = city[0];
   leftImg.setAttribute("src", city[1]);
