@@ -5,20 +5,20 @@ var choicePanel = document.getElementById("panel");
 function clickHandler(event) {
   // console.log('Clicked! ', event.target.id);
   switch (event.target.id) {
-  case 'leftImg':
-    console.log("you clicked on left");
-    leftFunction();
-    break;
-  case 'centerImg':
-    console.log("you clicked on center");
-    centerFunction();
-    break;
-  case 'rightImg':
-    console.log('you clicked on right');
-    rightFunction();
-    break;
-  default:
-    console.log('blam', event.target.id);
+    case 'leftImg':
+      console.log("you clicked on left");
+      leftFunction();
+      break;
+    case 'centerImg':
+      console.log("you clicked on center");
+      centerFunction();
+      break;
+    case 'rightImg':
+      console.log('you clicked on right');
+      rightFunction();
+      break;
+    default:
+      console.log('blam', event.target.id);
   }
 }
 
@@ -103,13 +103,13 @@ function Player(
   this.health = startingHealth;
 }
 // Player methods
-Player.prototype.changeMoney = function(delta) {
+Player.prototype.changeMoney = function (delta) {
   this.money += delta;
 };
-Player.prototype.changeTime = function(delta) {
+Player.prototype.changeTime = function (delta) {
   this.time += delta;
 };
-Player.prototype.changeHealth = function(delta) {
+Player.prototype.changeHealth = function (delta) {
   this.health += delta;
 };
 function rollD20() {
@@ -117,7 +117,7 @@ function rollD20() {
   return roll;
 }
 //////// LIBRARY OF ACTIONS//////////
-var snooze = function() {
+var snooze = function () {
   var roll = rollD20();
   if (roll >= 18) {
     player.changeHealth(30);
@@ -135,7 +135,7 @@ var snooze = function() {
     // endGame('lose');
   }
 };
-var talkToStranger = function() {
+var talkToStranger = function () {
   var roll = rollD20();
   if (roll == 20) {
     var answer = prompt(
@@ -155,7 +155,7 @@ var talkToStranger = function() {
     // removeAction();
   }
 };
-var strangeJourney = function(answer) {
+var strangeJourney = function (answer) {
   var roll = rollD20();
   if (answer.toUpperCase() === "YES") {
     if (roll == 20) {
@@ -192,7 +192,7 @@ var strangeJourney = function(answer) {
     strangeJourney(prompt("Try again"));
   }
 };
-var searchSeatCustion = function() {
+var searchSeatCustion = function () {
   var roll = rollD20();
   if (roll == 20) {
     var answer = prompt(
@@ -246,7 +246,7 @@ function eatMushroom() {
     // endGame();
   }
 }
-var takeBus = function() {
+var takeBus = function () {
   var roll = rollD20();
   if (roll >= 17) {
     displayText("You caught the earlier bus and managed to take a quick nap!");
@@ -266,7 +266,7 @@ var takeBus = function() {
     changeLevel(tacoma);
   }
 };
-var takeCar = function() {
+var takeCar = function () {
   var roll = rollD20();
   if (roll >= 17) {
     displayText("You drive your car to BLANK and make great time!");
@@ -286,65 +286,126 @@ var takeCar = function() {
 
 // ********************************** FederalWay Logic Start*****************************
 //Bus Option
-  var takeBusFedWay = function() {
-     var roll = rollD20();
-     if (roll > 17) {
-       displayText('Bus ran through some stoplights and you made it there quick!');
-       player.changeTime(-10);
-       player.changeMoney(-5);
-     } else if (roll >= 7) {
-       displayText('Bus driver is newer and goes slow figuring out his route');
-       player.changeTime(-20);
-       player.changeMoney(-5);
-     } else {
-       displayText('Bus tire is flat you had to wait for next one, big loss of time and frustraion');
-       player.changeTime(-45);
-       player.changeHealth(-10);
-       player.changeMoney(-10);
-    }
-   };
+var takeBusFedWay = function () {
+  var roll = rollD20();
+  if (roll > 17) {
+    displayText('Bus ran through some stoplights and you made it there quick!');
+    player.changeTime(-10);
+    player.changeMoney(-5);
+  } else if (roll >= 7) {
+    displayText('Bus driver is newer and goes slow figuring out his route');
+    player.changeTime(-20);
+    player.changeMoney(-5);
+  } else {
+    displayText('Bus tire is flat you had to wait for next one, big loss of time and frustraion');
+    player.changeTime(-45);
+    player.changeHealth(-10);
+    player.changeMoney(-10);
+  }
+};
 
-   //Train Option
-   var takeTrainFedWay = function() {
-    var roll = rollD20();
-    if (roll > 15) {
-      displayText('Train is running smoothly this morning, you practically flew to your next stop!');
-      player.changeTime(-5);
-      player.changeMoney(-15);
-    } else if (roll >= 5) {
-      displayText('The train is a little behind, but not much');
-      player.changeTime(-10);
-      player.changeMoney(-15);
-    } else {
-      displayText('The train breaks down, you have to wait for another one to arrive. You also get charged for two train tickets');
-      player.changeTime(-45);
-      player.changeHealth(-10);
-      player.changeMoney(-30);
-   }
-  };
+//Train Option
+var takeTrainFedWay = function () {
+  var roll = rollD20();
+  if (roll > 15) {
+    displayText('Train is running smoothly this morning, you practically flew to your next stop!');
+    player.changeTime(-5);
+    player.changeMoney(-15);
+  } else if (roll >= 5) {
+    displayText('The train is a little behind, but not much');
+    player.changeTime(-10);
+    player.changeMoney(-15);
+  } else {
+    displayText('The train breaks down, you have to wait for another one to arrive. You also get charged for two train tickets');
+    player.changeTime(-45);
+    player.changeHealth(-10);
+    player.changeMoney(-30);
+  }
+};
 
-  //Moped with stranger option 
-  var rideMoped = function() {
-    var roll = rollD20();
-    if (roll > 17) {
-      displayText('The risk payed off the moped ended up weaving in and out of traffic to save you time, but they charged you 15$');
-      player.changeTime(-5);
-      player.changeMoney(-15);
-    } else if (roll >= 5) {
-      displayText('The moped ride was weird, but it made it in average time. The driver charged you 15$');
-      player.changeTime(-10);
-      player.changeMoney(-15);
-    } else {
-      displayText('The moped was a horrible idea, it almost immediately crashed into the stoplight. You still got charged 15$');
-      player.changeTime(-45);
-      player.changeHealth(-50);
-      player.changeMoney(-15);
-   }
-  };
+//Moped with stranger option 
+var rideMoped = function () {
+  var roll = rollD20();
+  if (roll > 17) {
+    displayText('The risk payed off the moped ended up weaving in and out of traffic to save you time, but they charged you 15$');
+    player.changeTime(-5);
+    player.changeMoney(-15);
+  } else if (roll >= 5) {
+    displayText('The moped ride was weird, but it made it in average time. The driver charged you 15$');
+    player.changeTime(-10);
+    player.changeMoney(-15);
+  } else {
+    displayText('The moped was a horrible idea, it almost immediately crashed into the stoplight. You still got charged 15$');
+    player.changeTime(-45);
+    player.changeHealth(-50);
+    player.changeMoney(-15);
+  }
+};
 
 // *************************************End of Federal Way Logic
 
+//**************************************SeaTac (level03)
 
+//Bus Option//
+var takeBusSeaTac = function () {
+  var roll = rollD20();
+  if (roll > 18) {
+    displayText('The bus is running behind and it skips 4 stops, getting you there sooner!');
+    player.changeTime(-7);
+    player.changeMoney(-5);
+  } else if (roll >= 5) {
+    displayText('Bus is delayed');
+    player.changeTime(-10);
+    player.changeMoney(-5);
+  } else {
+    displayText('Bus stop is closed');
+    player.changeTime(-25);
+    player.changeHealth(-15);
+    player.changeMoney(-0);
+  }
+};
+
+//Train Option//
+var takeTrainSeaTac = function () {
+  var roll = rollD20();
+  if (roll > 16) {
+    displayText('Train is on time and you arrive on schedule');
+    player.changeTime(-10);
+    player.changeMoney(-15);
+  } else if (roll >= 7) {
+    displayText('You loose time looking for your ticket');
+    player.changeTime(-13);
+    player.changeMoney(-15);
+  } else {
+    displayText('Emergency on train, stalls departure')
+    player.changeTime(-22);
+    player.changeHealth(-15);
+    player.changeMoney(-0);
+  }
+};
+
+//Carpool
+var CarpoolSeaTac = function () {
+  var roll = rollD20();
+  if (roll > 14) {
+    displayText('Traffic is light and save some time');
+    player.changeTime(-5);
+    player.changeMoney(-20);
+  } else if (roll >= 8) {
+    displayText('Your ride is late');
+    player.changeTime(-12);
+    player.changeMoney(-20);
+  } else {
+    displayText('Accidents on the road, delay your arrival time')
+    player.changeTime(-30);
+    player.changeHealth(-9);
+    player.changeMoney(-0);
+  }
+};
+
+
+
+////////////////--------------------------------------------------------
 function changeLevel(city, funcOne, funcTwo, funcThree) {
   heading.textContent = city[0];
   leftImg.setAttribute("src", city[1]);
