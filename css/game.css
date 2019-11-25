@@ -53,7 +53,7 @@ hr {
   margin-top: 10px;
   height: 1100px;
   width: 1900px;
-  background-color: #3C393C;;
+  background-color: #3C393C;
   border: 5px solid black;
   border-radius: 20%;
   font-family: 'Press Start 2P', cursive;
@@ -99,46 +99,66 @@ hr {
 
 
 #panel {
-  background-color: rgba(128,128,128,0.5);
-  border-radius: 5px;
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
+  margin: 0 auto;
+  margin-top: 100px;
+  margin-bottom: 25px;
   height: 500px;
-  width: 1000px;
-  z-index: 1;
-  margin-bottom: 10px;
+  width: 1800px;
 }
 
-#textbox {
-  background-color: black;
-  border-radius: 5px;
-  color: rgb(38, 247, 10);
+#panel #heading {
+  color: #FFB000;
+  font-size: 50px;
+  margin-bottom: 30px;
+}
+
+#panel img {
+  margin: 0 60px 0 60px;
   height: 400px;
-  width: 1000px;
-  z-index: 1;
+  width: 400px;
 }
 
-#mapImage{
-float:right;
-padding: 10px;
-  background-color:rgb(38, 247, 10);
-  transition: transform .2s;
+#gameOutput {
+  display: inline-block;
+  vertical-align: top;
+  margin: 0 auto;
+  overflow: scroll;
+  background-color: #3C393C;
+  color: #33FF33;
+  height: 250px;
+  width: 1200px;
+}
 
+#gameOutput p:nth-child(1) {
+  text-align: center;
+  font-size: 25px;
+  color: #FFB000;
+  text-decoration: underline;
+  line-height: 40px;
+}
+
+#gameOutput p {
+  text-align: left;
+  font-size: 20px;
+  line-height: 32px;
+}
+
+#mapImage {
+  display: inline-block;
+  padding: 10px;
+  background-color:#33FF33;
+  transition: transform .2s;
   height: 250px;
   width: 200px;
-  z-index: 999;
   margin-bottom:90px;
   margin-right: 50px;
   border-radius: 10%;
 }
 
 #mapImage:hover{
-  transform: scale(1.5);
-
-  /* top:0 px;
-  bottom: 90px; */
+  transform: scale(2); 
 }
+
 #no-display-1 {
   display: none;
 }
@@ -151,8 +171,8 @@ padding: 10px;
   z-index: 5;
   font-family: 'Press Start 2P', cursive;
   font-size: 100px;
-  color: rgb(38, 247, 10);
-  background-color: black;
+  color: #33FF33;
+  background-color: #3C393C;
   padding: 500px;
 }
 #outcome {
@@ -161,5 +181,5 @@ padding: 10px;
   z-index: 5;
   font-family: 'Press Start 2P', cursive;
   font-size: 50px;
-  color: rgb(38, 247, 10);
+  color: #33FF33;
 }
