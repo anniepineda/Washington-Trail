@@ -35,11 +35,13 @@ var tacoma = [
   'assets/Maps/location1.png'
 ];
 var federalWay = [
-  'Federal Way',
-  'https://via.placeholder.com/150',
-  'https://via.placeholder.com/150',
-  'https://via.placeholder.com/150',
-  'assets/Maps/location2.png'
+
+  "Federal Way",
+  "assets/Level Images/Moped.jpg",
+  "assets/Level Images/Bus.jpg",
+  "assets/Level Images/Train.jpg",
+  "location2.png"
+
 ];
 var seaTac = [
   'SeaTac',
@@ -357,6 +359,7 @@ function displayText(text) {
   alert.textContent = text;
   textBox.appendChild(alert);
 }
+
 // ENDS GAME AND DISPLAYS RESULT
 function gameOver(outcome) {
   gameOverMsg.setAttribute('id','game-over');
