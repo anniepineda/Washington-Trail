@@ -139,3 +139,27 @@ padding: 10px;
   top:0 px;
   bottom: 90px;
 }
+#no-display-1 {
+  display: none;
+}
+#no-display-2 {
+  display: none;
+}
+#game-over {
+  position: fixed;
+  margin: 0 auto;
+  z-index: 5;
+  font-family: 'Press Start 2P', cursive;
+  font-size: 100px;
+  color: rgb(38, 247, 10);
+  background-color: black;
+  padding: 500px;
+}
+#outcome {
+  position: fixed;
+  margin-top: 200px;
+  z-index: 5;
+  font-family: 'Press Start 2P', cursive;
+  font-size: 50px;
+  color: rgb(38, 247, 10);
+}
