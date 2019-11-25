@@ -130,14 +130,14 @@ padding: 10px;
   z-index: 999;
   margin-bottom:90px;
   margin-right: 50px;
+  border-radius: 10%;
 }
 
 #mapImage:hover{
-  
-  
-    transform: scale(1.5); 
-  top:0 px;
-  bottom: 90px;
+  transform: scale(1.5);
+
+  /* top:0 px;
+  bottom: 90px; */
 }
 #no-display-1 {
   display: none;
