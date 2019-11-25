@@ -650,17 +650,16 @@ function gameOver(outcome) {
 //   }
 // };
 
-var player = new Player('testPlayer');
-
 changeLevel(home, takeBus, takeCar, snooze);
 var playerInfo = document.createElement('span');
-playerInfo.textContent = player.name;
-document.getElementById('player-data').appendChild(playerInfo);
+playerInfo.textContent = player.name + ' health ';
+var infoContainer = document.getElementById('player-data');
+infoContainer.insertBefore(playerInfo, infoContainer.firstChild);
 // Player healthbar
 function drawHealthBar(canvas, x, y, width, height, health, max) {
 
   canvas.fillStyle = '#000000';
-  canvas.fillRect(x,y,width,height);
+  canvas.fillRect(x, y, width, height);
 
   var colorNumber = Math.round((1-(health/max)) * 0xff) * 0x10000 + Math.round((health/max) * 0xff) * 0x100;
   var colorString = colorNumber.toString(16);
